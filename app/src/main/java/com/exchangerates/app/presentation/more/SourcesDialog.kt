@@ -35,6 +35,7 @@ import com.exchangerates.app.domain.model.RateMode
 import com.exchangerates.app.domain.model.SourceStatus
 import com.exchangerates.app.presentation.util.formatDateTime
 import com.exchangerates.app.presentation.util.rateModeTitle
+import com.exchangerates.app.presentation.util.rememberAppLocale
 import java.util.Locale
 
 /**
@@ -50,7 +51,7 @@ fun SourcesDialog(
     onDismiss: () -> Unit,
 ) {
     val colors = AppTheme.colors
-    val locale = Locale.getDefault()
+    val locale = rememberAppLocale()
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -73,6 +74,11 @@ fun SourcesDialog(
                     text = stringResource(R.string.rate_mode_section),
                     style = MaterialTheme.typography.labelLarge,
                     color = colors.textSecondary,
+                )
+                Text(
+                    text = stringResource(R.string.rate_mode_mid_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = colors.textTertiary,
                 )
                 Spacer(Modifier.height(6.dp))
                 RateMode.entries.forEach { mode ->

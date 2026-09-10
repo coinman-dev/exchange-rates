@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -63,61 +64,86 @@ fun CurrencyPickerSheet(
 ) {
     val colors = AppTheme.colors
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    var query by remember { mutableStateOf("") }
-    var filter by remember { mutableStateOf(PickerFilter.POPULAR) }
-
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
         containerColor = colors.background,
         contentColor = colors.textPrimary,
     ) {
-        Column(modifier = Modifier.fillMaxHeight(0.92f)) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.headlineSmall,
-                color = colors.textPrimary,
-                modifier = Modifier.padding(horizontal = AppDimens.screenPadding),
-            )
-            Spacer(Modifier.height(14.dp))
-            SearchField(
-                query = query,
-                onQueryChange = { query = it },
-                modifier = Modifier.padding(horizontal = AppDimens.screenPadding),
-            )
-            Spacer(Modifier.height(12.dp))
-            FilterRow(selected = filter, onSelect = { filter = it })
-            Spacer(Modifier.height(8.dp))
+        CurrencyPickerContent(
+            currencies = currencies,
+            russian = russian,
+            alreadyAdded = alreadyAdded,
+            title = title,
+            onSelect = onSelect,
+            modifier = Modifier.fillMaxHeight(0.94f),
+        )
+    }
+}
 
-            val visible = remember(currencies, query, filter, russian) {
-                CurrencyFilter.apply(currencies, query, filter, russian)
+/**
+ * Содержимое диалога вынесено отдельно: так его можно отрисовать в тестах
+ * и снять скриншот без модального окна.
+ */
+@Composable
+internal fun CurrencyPickerContent(
+    currencies: List<Currency>,
+    russian: Boolean,
+    alreadyAdded: Set<String>,
+    title: String,
+    onSelect: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val colors = AppTheme.colors
+    var query by remember { mutableStateOf("") }
+    var filter by remember { mutableStateOf(PickerFilter.POPULAR) }
+
+    Column(modifier = modifier.background(colors.background)) {
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.headlineSmall,
+            color = colors.textPrimary,
+            modifier = Modifier.padding(horizontal = AppDimens.screenPadding),
+        )
+        Spacer(Modifier.height(14.dp))
+        SearchField(
+            query = query,
+            onQueryChange = { query = it },
+            modifier = Modifier.padding(horizontal = AppDimens.screenPadding),
+        )
+        Spacer(Modifier.height(12.dp))
+        FilterRow(selected = filter, onSelect = { filter = it })
+        Spacer(Modifier.height(8.dp))
+
+        val visible = remember(currencies, query, filter, russian) {
+            CurrencyFilter.apply(currencies, query, filter, russian)
+        }
+
+        if (visible.isEmpty()) {
+            Box(
+                modifier = Modifier.fillMaxWidth().padding(40.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = stringResource(R.string.picker_nothing_found),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = colors.textSecondary,
+                )
             }
-
-            if (visible.isEmpty()) {
-                Box(
-                    modifier = Modifier.fillMaxWidth().padding(40.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = stringResource(R.string.picker_nothing_found),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = colors.textSecondary,
+        } else {
+            LazyColumn(modifier = Modifier.fillMaxWidth().weight(1f)) {
+                items(visible, key = { it.code }) { currency ->
+                    CurrencyRow(
+                        currency = currency,
+                        russian = russian,
+                        isAdded = currency.code in alreadyAdded,
+                        onClick = { onSelect(currency.code) },
                     )
                 }
-            } else {
-                LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                    items(visible, key = { it.code }) { currency ->
-                        CurrencyRow(
-                            currency = currency,
-                            russian = russian,
-                            isAdded = currency.code in alreadyAdded,
-                            onClick = { onSelect(currency.code) },
-                        )
-                    }
-                    item { Spacer(Modifier.height(24.dp)) }
-                }
-            }
+            item { Spacer(Modifier.height(24.dp)) }
         }
+    }
     }
 }
 
@@ -166,17 +192,22 @@ private fun SearchField(
     }
 }
 
+/**
+ * Разделы списка. FlowRow вместо Row: на узком экране пять подписей в одну
+ * строку не влезали и обрезались по буквам, теперь они переносятся.
+ */
 @Composable
 private fun FilterRow(
     selected: PickerFilter,
     onSelect: (PickerFilter) -> Unit,
 ) {
     val colors = AppTheme.colors
-    Row(
+    FlowRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = AppDimens.screenPadding),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         PickerFilter.entries.forEach { entry ->
             val isSelected = entry == selected
@@ -184,6 +215,8 @@ private fun FilterRow(
                 text = stringResource(filterLabel(entry)),
                 style = MaterialTheme.typography.labelMedium,
                 color = if (isSelected) colors.background else colors.textSecondary,
+                maxLines = 1,
+                softWrap = false,
                 modifier = Modifier
                     .background(
                         if (isSelected) colors.textPrimary else colors.surface,
@@ -216,7 +249,7 @@ private fun CurrencyRow(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
-            .padding(horizontal = AppDimens.screenPadding, vertical = 12.dp),
+            .padding(horizontal = AppDimens.screenPadding, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         CurrencyIcon(currency, size = 34.dp)

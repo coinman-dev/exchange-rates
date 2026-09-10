@@ -11,6 +11,13 @@
     <string name="no_rate">no rate</string>
     <string name="loading_rates">Loading rates…</string>
 
+    <!-- calculator operator buttons (screen reader labels) -->
+    <string name="operator_plus">plus</string>
+    <string name="operator_minus">minus</string>
+    <string name="operator_times">multiply</string>
+    <string name="operator_divide">divide</string>
+    <string name="operator_equals">equals</string>
+
     <!-- footer -->
     <string name="updated_at">Last updated: %1$s</string>
     <string name="updated_offline">Offline · data from %1$s</string>
@@ -22,7 +29,7 @@
     <string name="rate_mode_cbr_short">CBR rate</string>
     <string name="rate_mode_tcmb_short">CBRT rate</string>
     <string name="rate_mode_nbk_short">NBK rate</string>
-    <string name="rate_mode_mid">Mid-market (market midpoint)</string>
+    <string name="rate_mode_mid">Mid-market rate</string>
     <string name="rate_mode_cbr">Central Bank of Russia</string>
     <string name="rate_mode_tcmb">Central Bank of Türkiye</string>
     <string name="rate_mode_nbk">National Bank of Kazakhstan</string>
@@ -30,6 +37,7 @@
     <!-- sources dialog -->
     <string name="sources_title">Rates and sources</string>
     <string name="rate_mode_section">Rate type</string>
+    <string name="rate_mode_mid_hint">Mid-market is the midpoint between the buy and sell rate.</string>
     <string name="sources_section">Data sources</string>
     <string name="sources_empty">No source information yet. Pull to refresh.</string>
     <string name="sources_used_for">%1$d rates</string>

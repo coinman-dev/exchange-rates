@@ -1,6 +1,7 @@
 package com.exchangerates.app.presentation.util
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import com.exchangerates.app.R
 import com.exchangerates.app.domain.model.RateMode
@@ -11,10 +12,20 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
 
+/**
+ * Локаль, за которой Compose следит: при смене языка приложения экраны
+ * перерисуются. Прямое чтение Locale.getDefault() в composable этого не даёт.
+ */
+@Composable
+fun rememberAppLocale(): Locale {
+    val composeLocale = androidx.compose.ui.text.intl.Locale.current
+    return remember(composeLocale) { Locale.forLanguageTag(composeLocale.toLanguageTag()) }
+}
+
 /** «Обновлено: 10 сент., 13:38» или «Курс ЦБ РФ на 10.09.2026». */
 @Composable
 fun formatUpdatedAt(state: ConverterUiState): String {
-    val locale = Locale.getDefault()
+    val locale = rememberAppLocale()
     return if (state.rateMode.isCentralBank) {
         val date = state.dataAsOf?.let { formatDate(it, locale) }
         if (date == null) {
@@ -52,13 +63,18 @@ fun rateModeTitle(mode: RateMode): String = stringResource(
     },
 )
 
+/**
+ * Компактная дата со временем: «10 сент. 2026, 15:53».
+ * Локализованный формат добавляет «г.» и лишние запятые, из-за чего строка
+ * не помещалась в футер на узком экране.
+ */
 fun formatDateTime(instant: Instant, locale: Locale): String =
-    DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
+    DateTimeFormatter.ofPattern(if (locale.language == "ru") "d MMM yyyy, HH:mm" else "MMM d, yyyy, HH:mm")
         .withLocale(locale)
         .format(instant.atZone(ZoneId.systemDefault()))
 
 fun formatDate(instant: Instant, locale: Locale): String =
-    DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+    DateTimeFormatter.ofPattern(if (locale.language == "ru") "d MMM yyyy" else "MMM d, yyyy")
         .withLocale(locale)
         .format(instant.atZone(ZoneId.systemDefault()))
 

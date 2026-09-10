@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -167,7 +168,7 @@ fun MoreScreen(
             )
         }
 
-        Spacer(Modifier.height(120.dp))
+        Spacer(Modifier.height(AppDimens.bottomBarSpace))
     }
 
     if (sourcesVisible) {
@@ -234,7 +235,13 @@ private fun <T> SegmentedRow(
                 }
             }
         } else {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            // FlowRow: подписи вроде «Как в системе» + «Светлая» + «Тёмная»
+            // в одну строку не помещаются и раньше рвались по буквам
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 options.forEach { (value, title) ->
                     OptionChip(
                         title = title,
@@ -269,6 +276,8 @@ private fun OptionChip(
             text = title,
             style = MaterialTheme.typography.labelLarge,
             color = if (selected) androidx.compose.ui.graphics.Color.White else colors.textPrimary,
+            maxLines = 1,
+            softWrap = false,
         )
     }
 }

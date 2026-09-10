@@ -58,7 +58,7 @@ fun RatesOverviewScreen(
             contentPadding = PaddingValues(
                 start = AppDimens.screenPadding,
                 end = AppDimens.screenPadding,
-                bottom = 140.dp,
+                bottom = AppDimens.bottomBarSpace,
             ),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
@@ -76,7 +76,7 @@ fun RatesOverviewScreen(
                         .fillMaxWidth()
                         .background(colors.surface, RoundedCornerShape(AppDimens.cardCorner))
                         .clickable { onOpenChart(row.currency.code) }
-                        .padding(horizontal = 18.dp, vertical = 16.dp),
+                        .padding(horizontal = AppDimens.cardPaddingH, vertical = 14.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     CurrencyIcon(row.currency)

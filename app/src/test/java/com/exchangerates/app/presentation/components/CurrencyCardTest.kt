@@ -1,7 +1,7 @@
 package com.exchangerates.app.presentation.components
 
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -30,7 +30,7 @@ import org.robolectric.annotation.Config
 class CurrencyCardTest {
 
     @get:Rule
-    val compose = createComposeRule()
+    val compose = createAndroidComposeRule<androidx.activity.ComponentActivity>()
 
     private val usd = Currency("USD", CurrencyKind.FIAT, "US", "US Dollar", "доллар США", "$", 2, 1)
     private val rub = Currency("RUB", CurrencyKind.FIAT, "RU", "Russian Ruble", "российский рубль", "₽", 2, 3)
@@ -122,9 +122,12 @@ class CurrencyCardTest {
     }
 
     @Test
-    fun `изменение за сутки выводится рядом с курсом`() {
+    fun `изменение за сутки выводится в той же строке, что и курс`() {
+        // курс и изменение собраны в один Text: иначе на узком экране
+        // изменение переносилось по одному символу в столбик
         card(data(change = "+1.24 %"))
-        compose.onNodeWithText("  +1.24 %").assertIsDisplayed()
+        compose.onNodeWithText("+1.24 %", substring = true).assertIsDisplayed()
+        compose.onNodeWithText("1 USD → 84.3300 RUB", substring = true).assertIsDisplayed()
     }
 
     @Test
@@ -135,8 +138,10 @@ class CurrencyCardTest {
                 OperatorBar(onOperator = { pressed += it })
             }
         }
-        compose.onNodeWithContentDescription("плюс").performClick()
-        compose.onNodeWithContentDescription("равно").performClick()
+        val plus = compose.activity.getString(com.exchangerates.app.R.string.operator_plus)
+        val equals = compose.activity.getString(com.exchangerates.app.R.string.operator_equals)
+        compose.onNodeWithContentDescription(plus).performClick()
+        compose.onNodeWithContentDescription(equals).performClick()
         assertEquals(listOf(MathOperator.PLUS, MathOperator.EQUALS), pressed)
     }
 }

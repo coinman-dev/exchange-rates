@@ -103,8 +103,8 @@ fun ConverterScreen(
                 contentPadding = PaddingValues(
                     start = AppDimens.screenPadding,
                     end = AppDimens.screenPadding,
-                    top = 4.dp,
-                    bottom = 140.dp,
+                    top = 8.dp,
+                    bottom = AppDimens.bottomBarSpace,
                 ),
                 verticalArrangement = Arrangement.spacedBy(AppDimens.cardGap),
             ) {

@@ -36,7 +36,11 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -118,7 +122,7 @@ fun CurrencyCard(
                     currency = data.currency,
                     onClick = onPickCurrency,
                 )
-                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(8.dp))
                 Column(
                     modifier = Modifier.weight(1f),
                     horizontalAlignment = Alignment.End,
@@ -144,7 +148,7 @@ fun CurrencyCard(
                     }
                 }
                 if (isActive) {
-                    Spacer(Modifier.width(10.dp))
+                    Spacer(Modifier.width(8.dp))
                     ClearButton(onClear)
                 }
             }
@@ -165,9 +169,9 @@ private fun CurrencySelector(
     Row(
         modifier = Modifier
             .clickable(onClick = onClick)
-            .padding(vertical = 4.dp, horizontal = 2.dp),
+            .padding(vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         CurrencyIcon(currency)
         Text(
@@ -179,7 +183,7 @@ private fun CurrencySelector(
             imageVector = Icons.Filled.ExpandMore,
             contentDescription = null,
             tint = colors.textSecondary,
-            modifier = Modifier.size(20.dp),
+            modifier = Modifier.size(18.dp),
         )
     }
 }
@@ -235,11 +239,20 @@ private fun AmountArea(
             style = amountStyle,
             color = colors.textPrimary,
             maxLines = 1,
+            softWrap = false,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier.clickable(onClick = onSelect),
         )
     }
 }
 
+/**
+ * Курс и изменение за сутки одной строкой.
+ *
+ * На узком экране (Galaxy S21 и подобные) отдельные Text в Row не помещались,
+ * и изменение переносилось по одному символу в столбик. Поэтому строка
+ * собирается целиком, перенос запрещён, а лишнее обрезается многоточием.
+ */
 @Composable
 private fun UnitRateLine(
     text: String,
@@ -247,23 +260,24 @@ private fun UnitRateLine(
     changePositive: Boolean,
 ) {
     val colors = AppTheme.colors
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            color = colors.textSecondary,
-        )
+    val changeColor = if (changePositive) colors.positive else colors.negative
+    val line = buildAnnotatedString {
+        append(text)
         if (changeText != null) {
-            Text(
-                text = "  $changeText",
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 13.sp,
-                ),
-                color = if (changePositive) colors.positive else colors.negative,
-            )
+            append("  ")
+            withStyle(SpanStyle(color = changeColor, fontWeight = FontWeight.Medium)) {
+                append(changeText)
+            }
         }
     }
+    Text(
+        text = line,
+        style = MaterialTheme.typography.bodyMedium,
+        color = colors.textSecondary,
+        maxLines = 1,
+        softWrap = false,
+        overflow = TextOverflow.Ellipsis,
+    )
 }
 
 @Composable

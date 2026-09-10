@@ -29,7 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.exchangerates.app.core.theme.AppDimens
 import com.exchangerates.app.core.theme.AppTheme
@@ -207,6 +207,9 @@ fun AddCurrencyButton(
 /**
  * Подпись под списком: когда обновлялись курсы и какой это курс.
  * Точка слева — индикатор состояния: синяя (актуально), оранжевая (офлайн).
+ *
+ * Две строки вместо одной: на узком экране русская дата и название курса
+ * рядом не помещались и переносились по слогам.
  */
 @Composable
 fun FooterStatus(
@@ -217,33 +220,39 @@ fun FooterStatus(
     modifier: Modifier = Modifier,
 ) {
     val colors = AppTheme.colors
-    Row(
+    Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 4.dp, vertical = 14.dp),
-        verticalAlignment = Alignment.CenterVertically,
+            .padding(start = 4.dp, end = 4.dp, top = 12.dp, bottom = 6.dp),
     ) {
-        Box(
-            modifier = Modifier
-                .size(8.dp)
-                .background(if (isOffline) colors.warning else colors.accent, CircleShape),
-        )
-        Spacer(Modifier.width(8.dp))
-        Text(
-            text = updatedText,
-            style = MaterialTheme.typography.bodyMedium,
-            color = colors.textSecondary,
-            modifier = Modifier.weight(1f),
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .background(if (isOffline) colors.warning else colors.accent, CircleShape),
+            )
+            Spacer(Modifier.width(8.dp))
+            Text(
+                text = updatedText,
+                style = MaterialTheme.typography.bodyMedium,
+                color = colors.textSecondary,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
         Row(
-            modifier = Modifier.clickable(onClick = onInfoClick).padding(4.dp),
+            modifier = Modifier
+                .clickable(onClick = onInfoClick)
+                .padding(start = 16.dp, top = 4.dp, bottom = 4.dp, end = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = modeText,
                 style = MaterialTheme.typography.bodyMedium,
                 color = colors.textSecondary,
-                textAlign = TextAlign.End,
+                maxLines = 1,
+                softWrap = false,
             )
             Spacer(Modifier.width(6.dp))
             Icon(

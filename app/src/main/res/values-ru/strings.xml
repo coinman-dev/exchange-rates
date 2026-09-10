@@ -11,6 +11,13 @@
     <string name="no_rate">нет курса</string>
     <string name="loading_rates">Загрузка курсов…</string>
 
+    <!-- кнопки калькулятора (подписи для чтения с экрана) -->
+    <string name="operator_plus">плюс</string>
+    <string name="operator_minus">минус</string>
+    <string name="operator_times">умножить</string>
+    <string name="operator_divide">разделить</string>
+    <string name="operator_equals">равно</string>
+
     <!-- футер -->
     <string name="updated_at">Обновлено: %1$s</string>
     <string name="updated_offline">Офлайн · данные от %1$s</string>
@@ -22,7 +29,7 @@
     <string name="rate_mode_cbr_short">Курс ЦБ РФ</string>
     <string name="rate_mode_tcmb_short">Курс ЦБ Турции</string>
     <string name="rate_mode_nbk_short">Курс НБ Казахстана</string>
-    <string name="rate_mode_mid">Рыночный (середина между покупкой и продажей)</string>
+    <string name="rate_mode_mid">Рыночный курс</string>
     <string name="rate_mode_cbr">Центральный банк РФ</string>
     <string name="rate_mode_tcmb">Центральный банк Турции</string>
     <string name="rate_mode_nbk">Национальный банк Казахстана</string>
@@ -30,6 +37,7 @@
     <!-- диалог источников -->
     <string name="sources_title">Курсы и источники</string>
     <string name="rate_mode_section">Тип курса</string>
+    <string name="rate_mode_mid_hint">Рыночный курс — середина между покупкой и продажей.</string>
     <string name="sources_section">Источники данных</string>
     <string name="sources_empty">Сведений об источниках пока нет. Потяните список вниз для обновления.</string>
     <string name="sources_used_for">%1$d курсов</string>

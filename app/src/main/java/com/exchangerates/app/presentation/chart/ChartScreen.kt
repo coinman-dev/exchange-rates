@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -40,6 +42,7 @@ import com.exchangerates.app.presentation.converter.components.CurrencyIcon
 import com.exchangerates.app.presentation.picker.CurrencyPickerSheet
 import com.exchangerates.app.presentation.util.formatDate
 import com.exchangerates.app.presentation.util.formatDateTime
+import com.exchangerates.app.presentation.util.rememberAppLocale
 import java.math.BigDecimal
 import java.time.Instant
 import java.util.Locale
@@ -61,7 +64,7 @@ fun ChartScreen(
     modifier: Modifier = Modifier,
 ) {
     val colors = AppTheme.colors
-    val locale = Locale.getDefault()
+    val locale = rememberAppLocale()
     val formatter = remember(locale) { AmountFormatter(locale) }
     var picker by remember { mutableStateOf<PickerTarget>(PickerTarget.None) }
 
@@ -69,6 +72,7 @@ fun ChartScreen(
         modifier = modifier
             .fillMaxSize()
             .background(colors.background)
+            .verticalScroll(rememberScrollState())
             .padding(horizontal = AppDimens.screenPadding),
     ) {
         Text(
@@ -160,6 +164,7 @@ fun ChartScreen(
                 changePositive = stats.changePercent.signum() >= 0,
             )
         }
+        Spacer(Modifier.height(AppDimens.bottomBarSpace))
     }
 
     when (picker) {
@@ -256,6 +261,8 @@ private fun RangeSelector(selected: ChartRange, onSelect: (ChartRange) -> Unit) 
             Text(
                 text = range.id,
                 style = MaterialTheme.typography.labelLarge,
+                maxLines = 1,
+                softWrap = false,
                 color = if (isSelected) colors.textPrimary else colors.textSecondary,
                 modifier = Modifier
                     .background(
