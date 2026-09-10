@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Курсы валют</string>
+
+    <!-- конвертер -->
+    <string name="convert_title">Конвертер</string>
+    <string name="rates_title">Курсы</string>
+    <string name="you_convert">Вы конвертируете</string>
+    <string name="add_another_currency">Добавить валюту</string>
+    <string name="replace_currency">Заменить валюту</string>
+    <string name="no_rate">нет курса</string>
+    <string name="loading_rates">Загрузка курсов…</string>
+
+    <!-- футер -->
+    <string name="updated_at">Обновлено: %1$s</string>
+    <string name="updated_offline">Офлайн · данные от %1$s</string>
+    <string name="updated_never">Данных пока нет</string>
+    <string name="cb_rate_on_date">Официальный курс на %1$s</string>
+
+    <!-- режимы курса -->
+    <string name="rate_mode_mid_short">Рыночный курс</string>
+    <string name="rate_mode_cbr_short">Курс ЦБ РФ</string>
+    <string name="rate_mode_tcmb_short">Курс ЦБ Турции</string>
+    <string name="rate_mode_nbk_short">Курс НБ Казахстана</string>
+    <string name="rate_mode_mid">Рыночный (середина между покупкой и продажей)</string>
+    <string name="rate_mode_cbr">Центральный банк РФ</string>
+    <string name="rate_mode_tcmb">Центральный банк Турции</string>
+    <string name="rate_mode_nbk">Национальный банк Казахстана</string>
+
+    <!-- диалог источников -->
+    <string name="sources_title">Курсы и источники</string>
+    <string name="rate_mode_section">Тип курса</string>
+    <string name="sources_section">Источники данных</string>
+    <string name="sources_empty">Сведений об источниках пока нет. Потяните список вниз для обновления.</string>
+    <string name="sources_used_for">%1$d курсов</string>
+    <string name="sources_error">Ошибка: %1$s</string>
+    <string name="sources_no_data">Нет данных</string>
+    <string name="disclaimer">Курсы информационные и не являются предложением обмена валюты. Цены криптовалют с Binance даны в USDT и приняты равными доллару США.</string>
+    <string name="close">Закрыть</string>
+
+    <!-- выбор валюты -->
+    <string name="search_currency">Код, название или страна</string>
+    <string name="picker_nothing_found">Ничего не найдено</string>
+    <string name="filter_popular">Популярные</string>
+    <string name="filter_all">Все</string>
+    <string name="filter_fiat">Валюты</string>
+    <string name="filter_crypto">Крипта</string>
+    <string name="filter_metals">Металлы</string>
+
+    <!-- действия с карточкой -->
+    <string name="action_make_base">Сделать базовой</string>
+    <string name="action_move_up">Переместить вверх</string>
+    <string name="action_move_down">Переместить вниз</string>
+    <string name="action_remove">Удалить</string>
+    <string name="action_open_chart">Открыть график</string>
+
+    <!-- вкладки -->
+    <string name="tab_home">Главная</string>
+    <string name="tab_chart">График</string>
+    <string name="tab_more">Ещё</string>
+
+    <!-- график -->
+    <string name="chart_title">График</string>
+    <string name="chart_pick_pair">Валютная пара</string>
+    <string name="chart_min">Минимум</string>
+    <string name="chart_max">Максимум</string>
+    <string name="chart_avg">Среднее</string>
+    <string name="chart_change">Изменение</string>
+    <string name="chart_no_data">Для этой пары и периода истории нет</string>
+    <string name="chart_loading">Загрузка истории…</string>
+    <string name="chart_swap">Поменять</string>
+
+    <!-- ещё / настройки -->
+    <string name="more_title">Ещё</string>
+    <string name="settings_appearance">Оформление</string>
+    <string name="settings_theme">Тема</string>
+    <string name="theme_system">Как в системе</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="settings_language">Язык</string>
+    <string name="language_system">Как в системе</string>
+    <string name="language_ru">Русский</string>
+    <string name="language_en">English</string>
+    <string name="settings_numbers">Числа</string>
+    <string name="settings_decimals">Знаков после запятой</string>
+    <string name="settings_grouping">Разделять разряды</string>
+    <string name="settings_show_change">Показывать изменение за сутки</string>
+    <string name="settings_rates">Курсы</string>
+    <string name="settings_rate_mode">Тип курса</string>
+    <string name="settings_sync">Обновление</string>
+    <string name="settings_wifi_only">Фоновое обновление только по Wi-Fi</string>
+    <string name="settings_interval">Фоновое обновление каждые %1$d ч</string>
+    <string name="settings_refresh_now">Обновить сейчас</string>
+    <string name="settings_about">О приложении</string>
+    <string name="about_version">Версия %1$s</string>
+    <string name="about_sources">Источники данных и тип курса</string>
+    <string name="about_offline">Работает без интернета: последние загруженные курсы хранятся на устройстве.</string>
+
+    <!-- обзор курсов -->
+    <string name="rates_overview_hint">Курсы к %1$s</string>
+</resources>

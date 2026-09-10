@@ -1,0 +1,1992 @@
+[
+ {
+  "code": "USD",
+  "kind": "FIAT",
+  "country": "US",
+  "nameEn": "US Dollar",
+  "nameRu": "доллар США",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1
+ },
+ {
+  "code": "EUR",
+  "kind": "FIAT",
+  "country": "EU",
+  "nameEn": "Euro",
+  "nameRu": "евро",
+  "symbol": "€",
+  "decimals": 2,
+  "rank": 2
+ },
+ {
+  "code": "RUB",
+  "kind": "FIAT",
+  "country": "RU",
+  "nameEn": "Russian Ruble",
+  "nameRu": "российский рубль",
+  "symbol": "₽",
+  "decimals": 2,
+  "rank": 3
+ },
+ {
+  "code": "TRY",
+  "kind": "FIAT",
+  "country": "TR",
+  "nameEn": "Turkish Lira",
+  "nameRu": "турецкая лира",
+  "symbol": "₺",
+  "decimals": 2,
+  "rank": 4
+ },
+ {
+  "code": "KZT",
+  "kind": "FIAT",
+  "country": "KZ",
+  "nameEn": "Kazakhstani Tenge",
+  "nameRu": "казахский тенге",
+  "symbol": "₸",
+  "decimals": 2,
+  "rank": 5
+ },
+ {
+  "code": "GBP",
+  "kind": "FIAT",
+  "country": "GB",
+  "nameEn": "British Pound",
+  "nameRu": "британский фунт стерлингов",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 6
+ },
+ {
+  "code": "CNY",
+  "kind": "FIAT",
+  "country": "CN",
+  "nameEn": "Chinese Yuan",
+  "nameRu": "китайский юань",
+  "symbol": "CN¥",
+  "decimals": 2,
+  "rank": 7
+ },
+ {
+  "code": "JPY",
+  "kind": "FIAT",
+  "country": "JP",
+  "nameEn": "Japanese Yen",
+  "nameRu": "японская иена",
+  "symbol": "¥",
+  "decimals": 0,
+  "rank": 8
+ },
+ {
+  "code": "CHF",
+  "kind": "FIAT",
+  "country": "CH",
+  "nameEn": "Swiss Franc",
+  "nameRu": "швейцарский франк",
+  "symbol": "CHF",
+  "decimals": 2,
+  "rank": 9
+ },
+ {
+  "code": "AED",
+  "kind": "FIAT",
+  "country": "AE",
+  "nameEn": "United Arab Emirates Dirham",
+  "nameRu": "дирхам ОАЭ",
+  "symbol": "د.إ",
+  "decimals": 2,
+  "rank": 10
+ },
+ {
+  "code": "UAH",
+  "kind": "FIAT",
+  "country": "UA",
+  "nameEn": "Ukrainian Hryvnia",
+  "nameRu": "украинская гривна",
+  "symbol": "₴",
+  "decimals": 2,
+  "rank": 11
+ },
+ {
+  "code": "BYN",
+  "kind": "FIAT",
+  "country": "BY",
+  "nameEn": "Belarusian Ruble",
+  "nameRu": "белорусский рубль",
+  "symbol": "Br",
+  "decimals": 2,
+  "rank": 12
+ },
+ {
+  "code": "UZS",
+  "kind": "FIAT",
+  "country": "UZ",
+  "nameEn": "Uzbekistani Som",
+  "nameRu": "узбекский сум",
+  "symbol": "so'm",
+  "decimals": 2,
+  "rank": 13
+ },
+ {
+  "code": "GEL",
+  "kind": "FIAT",
+  "country": "GE",
+  "nameEn": "Georgian Lari",
+  "nameRu": "грузинский лари",
+  "symbol": "₾",
+  "decimals": 2,
+  "rank": 14
+ },
+ {
+  "code": "AMD",
+  "kind": "FIAT",
+  "country": "AM",
+  "nameEn": "Armenian Dram",
+  "nameRu": "армянский драм",
+  "symbol": "֏",
+  "decimals": 2,
+  "rank": 15
+ },
+ {
+  "code": "AZN",
+  "kind": "FIAT",
+  "country": "AZ",
+  "nameEn": "Azerbaijani Manat",
+  "nameRu": "азербайджанский манат",
+  "symbol": "₼",
+  "decimals": 2,
+  "rank": 16
+ },
+ {
+  "code": "KGS",
+  "kind": "FIAT",
+  "country": "KG",
+  "nameEn": "Kyrgystani Som",
+  "nameRu": "киргизский сом",
+  "symbol": "som",
+  "decimals": 2,
+  "rank": 17
+ },
+ {
+  "code": "TJS",
+  "kind": "FIAT",
+  "country": "TJ",
+  "nameEn": "Tajikistani Somoni",
+  "nameRu": "таджикский сомони",
+  "symbol": "ЅМ",
+  "decimals": 2,
+  "rank": 18
+ },
+ {
+  "code": "TMT",
+  "kind": "FIAT",
+  "country": "TM",
+  "nameEn": "Turkmenistani Manat",
+  "nameRu": "новый туркменский манат",
+  "symbol": "ТМТ",
+  "decimals": 2,
+  "rank": 19
+ },
+ {
+  "code": "MDL",
+  "kind": "FIAT",
+  "country": "MD",
+  "nameEn": "Moldovan Leu",
+  "nameRu": "молдавский лей",
+  "symbol": "L",
+  "decimals": 2,
+  "rank": 20
+ },
+ {
+  "code": "INR",
+  "kind": "FIAT",
+  "country": "IN",
+  "nameEn": "Indian Rupee",
+  "nameRu": "индийская рупия",
+  "symbol": "₹",
+  "decimals": 2,
+  "rank": 21
+ },
+ {
+  "code": "CAD",
+  "kind": "FIAT",
+  "country": "CA",
+  "nameEn": "Canadian Dollar",
+  "nameRu": "канадский доллар",
+  "symbol": "CA$",
+  "decimals": 2,
+  "rank": 22
+ },
+ {
+  "code": "AUD",
+  "kind": "FIAT",
+  "country": "AU",
+  "nameEn": "Australian Dollar",
+  "nameRu": "австралийский доллар",
+  "symbol": "A$",
+  "decimals": 2,
+  "rank": 23
+ },
+ {
+  "code": "PLN",
+  "kind": "FIAT",
+  "country": "PL",
+  "nameEn": "Polish Zloty",
+  "nameRu": "польский злотый",
+  "symbol": "zł",
+  "decimals": 2,
+  "rank": 24
+ },
+ {
+  "code": "RON",
+  "kind": "FIAT",
+  "country": "RO",
+  "nameEn": "Romanian Leu",
+  "nameRu": "румынский лей",
+  "symbol": "Lei",
+  "decimals": 2,
+  "rank": 25
+ },
+ {
+  "code": "MXN",
+  "kind": "FIAT",
+  "country": "MX",
+  "nameEn": "Mexican Peso",
+  "nameRu": "мексиканский песо",
+  "symbol": "MX$",
+  "decimals": 2,
+  "rank": 26
+ },
+ {
+  "code": "BRL",
+  "kind": "FIAT",
+  "country": "BR",
+  "nameEn": "Brazilian Real",
+  "nameRu": "бразильский реал",
+  "symbol": "R$",
+  "decimals": 2,
+  "rank": 27
+ },
+ {
+  "code": "KRW",
+  "kind": "FIAT",
+  "country": "KR",
+  "nameEn": "South Korean Won",
+  "nameRu": "южнокорейская вона",
+  "symbol": "₩",
+  "decimals": 0,
+  "rank": 28
+ },
+ {
+  "code": "THB",
+  "kind": "FIAT",
+  "country": "TH",
+  "nameEn": "Thai Baht",
+  "nameRu": "таиландский бат",
+  "symbol": "฿",
+  "decimals": 2,
+  "rank": 29
+ },
+ {
+  "code": "VND",
+  "kind": "FIAT",
+  "country": "VN",
+  "nameEn": "Vietnamese Dong",
+  "nameRu": "вьетнамский донг",
+  "symbol": "₫",
+  "decimals": 0,
+  "rank": 30
+ },
+ {
+  "code": "IDR",
+  "kind": "FIAT",
+  "country": "ID",
+  "nameEn": "Indonesian Rupiah",
+  "nameRu": "индонезийская рупия",
+  "symbol": "Rp",
+  "decimals": 2,
+  "rank": 31
+ },
+ {
+  "code": "ILS",
+  "kind": "FIAT",
+  "country": "IL",
+  "nameEn": "Israeli New Shekel",
+  "nameRu": "новый израильский шекель",
+  "symbol": "₪",
+  "decimals": 2,
+  "rank": 32
+ },
+ {
+  "code": "EGP",
+  "kind": "FIAT",
+  "country": "EG",
+  "nameEn": "Egyptian Pound",
+  "nameRu": "египетский фунт",
+  "symbol": "ج.م",
+  "decimals": 2,
+  "rank": 33
+ },
+ {
+  "code": "SAR",
+  "kind": "FIAT",
+  "country": "SA",
+  "nameEn": "Saudi Riyal",
+  "nameRu": "саудовский риял",
+  "symbol": "ر.س",
+  "decimals": 2,
+  "rank": 34
+ },
+ {
+  "code": "QAR",
+  "kind": "FIAT",
+  "country": "QA",
+  "nameEn": "Qatari Rial",
+  "nameRu": "катарский риал",
+  "symbol": "ر.ق",
+  "decimals": 2,
+  "rank": 35
+ },
+ {
+  "code": "SEK",
+  "kind": "FIAT",
+  "country": "SE",
+  "nameEn": "Swedish Krona",
+  "nameRu": "шведская крона",
+  "symbol": "kr",
+  "decimals": 2,
+  "rank": 36
+ },
+ {
+  "code": "NOK",
+  "kind": "FIAT",
+  "country": "NO",
+  "nameEn": "Norwegian Krone",
+  "nameRu": "норвежская крона",
+  "symbol": "kr",
+  "decimals": 2,
+  "rank": 37
+ },
+ {
+  "code": "DKK",
+  "kind": "FIAT",
+  "country": "DK",
+  "nameEn": "Danish Krone",
+  "nameRu": "датская крона",
+  "symbol": "kr.",
+  "decimals": 2,
+  "rank": 38
+ },
+ {
+  "code": "CZK",
+  "kind": "FIAT",
+  "country": "CZ",
+  "nameEn": "Czech Koruna",
+  "nameRu": "чешская крона",
+  "symbol": "Kč",
+  "decimals": 2,
+  "rank": 39
+ },
+ {
+  "code": "HUF",
+  "kind": "FIAT",
+  "country": "HU",
+  "nameEn": "Hungarian Forint",
+  "nameRu": "венгерский форинт",
+  "symbol": "Ft",
+  "decimals": 2,
+  "rank": 40
+ },
+ {
+  "code": "RSD",
+  "kind": "FIAT",
+  "country": "RS",
+  "nameEn": "Serbian Dinar",
+  "nameRu": "сербский динар",
+  "symbol": "RSD",
+  "decimals": 2,
+  "rank": 42
+ },
+ {
+  "code": "MNT",
+  "kind": "FIAT",
+  "country": "MN",
+  "nameEn": "Mongolian Tugrik",
+  "nameRu": "монгольский тугрик",
+  "symbol": "₮",
+  "decimals": 2,
+  "rank": 43
+ },
+ {
+  "code": "HKD",
+  "kind": "FIAT",
+  "country": "HK",
+  "nameEn": "Hong Kong Dollar",
+  "nameRu": "гонконгский доллар",
+  "symbol": "HK$",
+  "decimals": 2,
+  "rank": 44
+ },
+ {
+  "code": "SGD",
+  "kind": "FIAT",
+  "country": "SG",
+  "nameEn": "Singapore Dollar",
+  "nameRu": "сингапурский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 45
+ },
+ {
+  "code": "NZD",
+  "kind": "FIAT",
+  "country": "NZ",
+  "nameEn": "New Zealand Dollar",
+  "nameRu": "новозеландский доллар",
+  "symbol": "NZ$",
+  "decimals": 2,
+  "rank": 46
+ },
+ {
+  "code": "ZAR",
+  "kind": "FIAT",
+  "country": "ZA",
+  "nameEn": "South African Rand",
+  "nameRu": "южноафриканский рэнд",
+  "symbol": "R",
+  "decimals": 2,
+  "rank": 47
+ },
+ {
+  "code": "TWD",
+  "kind": "FIAT",
+  "country": "TW",
+  "nameEn": "New Taiwan Dollar",
+  "nameRu": "новый тайваньский доллар",
+  "symbol": "NT$",
+  "decimals": 2,
+  "rank": 48
+ },
+ {
+  "code": "MYR",
+  "kind": "FIAT",
+  "country": "MY",
+  "nameEn": "Malaysian Ringgit",
+  "nameRu": "малайзийский ринггит",
+  "symbol": "RM",
+  "decimals": 2,
+  "rank": 49
+ },
+ {
+  "code": "PHP",
+  "kind": "FIAT",
+  "country": "PH",
+  "nameEn": "Philippine Piso",
+  "nameRu": "филиппинский песо",
+  "symbol": "₱",
+  "decimals": 2,
+  "rank": 50
+ },
+ {
+  "code": "BTC",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Bitcoin",
+  "nameRu": "Биткойн",
+  "symbol": "₿",
+  "decimals": 8,
+  "rank": 51
+ },
+ {
+  "code": "ETH",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Ethereum",
+  "nameRu": "Эфириум",
+  "symbol": "Ξ",
+  "decimals": 8,
+  "rank": 52
+ },
+ {
+  "code": "USDT",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Tether",
+  "nameRu": "Tether",
+  "symbol": "₮",
+  "decimals": 4,
+  "rank": 53
+ },
+ {
+  "code": "XAU",
+  "kind": "METAL",
+  "country": null,
+  "nameEn": "Gold (troy ounce)",
+  "nameRu": "Золото (тройская унция)",
+  "symbol": "oz t",
+  "decimals": 4,
+  "rank": 54
+ },
+ {
+  "code": "XAG",
+  "kind": "METAL",
+  "country": null,
+  "nameEn": "Silver (troy ounce)",
+  "nameRu": "Серебро (тройская унция)",
+  "symbol": "oz t",
+  "decimals": 4,
+  "rank": 55
+ },
+ {
+  "code": "AAVE",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Aave",
+  "nameRu": "Aave",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1000
+ },
+ {
+  "code": "ADA",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Cardano",
+  "nameRu": "Cardano",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1001
+ },
+ {
+  "code": "AFN",
+  "kind": "FIAT",
+  "country": "AF",
+  "nameEn": "Afghan Afghani",
+  "nameRu": "афгани",
+  "symbol": "؋",
+  "decimals": 2,
+  "rank": 1002
+ },
+ {
+  "code": "ALGO",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Algorand",
+  "nameRu": "Algorand",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1003
+ },
+ {
+  "code": "ALL",
+  "kind": "FIAT",
+  "country": "AL",
+  "nameEn": "Albanian Lek",
+  "nameRu": "албанский лек",
+  "symbol": "L",
+  "decimals": 2,
+  "rank": 1004
+ },
+ {
+  "code": "ANG",
+  "kind": "FIAT",
+  "country": "CW",
+  "nameEn": "Netherlands Antillean Guilder",
+  "nameRu": "нидерландский антильский гульден",
+  "symbol": "ƒ",
+  "decimals": 2,
+  "rank": 1005
+ },
+ {
+  "code": "AOA",
+  "kind": "FIAT",
+  "country": "AO",
+  "nameEn": "Angolan Kwanza",
+  "nameRu": "ангольская кванза",
+  "symbol": "Kz",
+  "decimals": 2,
+  "rank": 1006
+ },
+ {
+  "code": "APT",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Aptos",
+  "nameRu": "Aptos",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1007
+ },
+ {
+  "code": "ARB",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Arbitrum",
+  "nameRu": "Arbitrum",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1008
+ },
+ {
+  "code": "ARS",
+  "kind": "FIAT",
+  "country": "AR",
+  "nameEn": "Argentine Peso",
+  "nameRu": "аргентинский песо",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1009
+ },
+ {
+  "code": "ATOM",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Cosmos",
+  "nameRu": "Cosmos",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1010
+ },
+ {
+  "code": "AVAX",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Avalanche",
+  "nameRu": "Avalanche",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1011
+ },
+ {
+  "code": "AWG",
+  "kind": "FIAT",
+  "country": "AW",
+  "nameEn": "Aruban Florin",
+  "nameRu": "арубанский флорин",
+  "symbol": "ƒ",
+  "decimals": 2,
+  "rank": 1012
+ },
+ {
+  "code": "BAM",
+  "kind": "FIAT",
+  "country": "BA",
+  "nameEn": "Bosnia-Herzegovina Convertible Mark",
+  "nameRu": "конвертируемая марка Боснии и Герцеговины",
+  "symbol": "КМ",
+  "decimals": 2,
+  "rank": 1013
+ },
+ {
+  "code": "BBD",
+  "kind": "FIAT",
+  "country": "BB",
+  "nameEn": "Barbadian Dollar",
+  "nameRu": "барбадосский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1014
+ },
+ {
+  "code": "BCH",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Bitcoin Cash",
+  "nameRu": "Bitcoin Cash",
+  "symbol": "",
+  "decimals": 8,
+  "rank": 1015
+ },
+ {
+  "code": "BDT",
+  "kind": "FIAT",
+  "country": "BD",
+  "nameEn": "Bangladeshi Taka",
+  "nameRu": "бангладешская така",
+  "symbol": "৳",
+  "decimals": 2,
+  "rank": 1016
+ },
+ {
+  "code": "BHD",
+  "kind": "FIAT",
+  "country": "BH",
+  "nameEn": "Bahraini Dinar",
+  "nameRu": "бахрейнский динар",
+  "symbol": "د.ب",
+  "decimals": 3,
+  "rank": 1017
+ },
+ {
+  "code": "BIF",
+  "kind": "FIAT",
+  "country": "BI",
+  "nameEn": "Burundian Franc",
+  "nameRu": "бурундийский франк",
+  "symbol": "Fr",
+  "decimals": 0,
+  "rank": 1018
+ },
+ {
+  "code": "BMD",
+  "kind": "FIAT",
+  "country": "BM",
+  "nameEn": "Bermudan Dollar",
+  "nameRu": "бермудский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1019
+ },
+ {
+  "code": "BNB",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "BNB",
+  "nameRu": "BNB",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1020
+ },
+ {
+  "code": "BND",
+  "kind": "FIAT",
+  "country": "BN",
+  "nameEn": "Brunei Dollar",
+  "nameRu": "брунейский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1021
+ },
+ {
+  "code": "BOB",
+  "kind": "FIAT",
+  "country": "BO",
+  "nameEn": "Bolivian Boliviano",
+  "nameRu": "боливийский боливиано",
+  "symbol": "Bs.",
+  "decimals": 2,
+  "rank": 1022
+ },
+ {
+  "code": "BSD",
+  "kind": "FIAT",
+  "country": "BS",
+  "nameEn": "Bahamian Dollar",
+  "nameRu": "багамский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1023
+ },
+ {
+  "code": "BTN",
+  "kind": "FIAT",
+  "country": "BT",
+  "nameEn": "Bhutanese Ngultrum",
+  "nameRu": "бутанский нгултрум",
+  "symbol": "Nu.",
+  "decimals": 2,
+  "rank": 1024
+ },
+ {
+  "code": "BWP",
+  "kind": "FIAT",
+  "country": "BW",
+  "nameEn": "Botswanan Pula",
+  "nameRu": "ботсванская пула",
+  "symbol": "P",
+  "decimals": 2,
+  "rank": 1025
+ },
+ {
+  "code": "BZD",
+  "kind": "FIAT",
+  "country": "BZ",
+  "nameEn": "Belize Dollar",
+  "nameRu": "белизский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1026
+ },
+ {
+  "code": "CDF",
+  "kind": "FIAT",
+  "country": "CD",
+  "nameEn": "Congolese Franc",
+  "nameRu": "конголезский франк",
+  "symbol": "Fr",
+  "decimals": 2,
+  "rank": 1027
+ },
+ {
+  "code": "CLP",
+  "kind": "FIAT",
+  "country": "CL",
+  "nameEn": "Chilean Peso",
+  "nameRu": "чилийский песо",
+  "symbol": "$",
+  "decimals": 0,
+  "rank": 1028
+ },
+ {
+  "code": "CNH",
+  "kind": "FIAT",
+  "country": "CN",
+  "nameEn": "Chinese Yuan (offshore)",
+  "nameRu": "китайский юань (офшорный)",
+  "symbol": "¥",
+  "decimals": 2,
+  "rank": 1029
+ },
+ {
+  "code": "COP",
+  "kind": "FIAT",
+  "country": "CO",
+  "nameEn": "Colombian Peso",
+  "nameRu": "колумбийский песо",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1030
+ },
+ {
+  "code": "CRC",
+  "kind": "FIAT",
+  "country": "CR",
+  "nameEn": "Costa Rican Colón",
+  "nameRu": "костариканский колон",
+  "symbol": "₡",
+  "decimals": 2,
+  "rank": 1031
+ },
+ {
+  "code": "CUP",
+  "kind": "FIAT",
+  "country": "CU",
+  "nameEn": "Cuban Peso",
+  "nameRu": "кубинский песо",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1032
+ },
+ {
+  "code": "CVE",
+  "kind": "FIAT",
+  "country": "CV",
+  "nameEn": "Cape Verdean Escudo",
+  "nameRu": "эскудо Кабо-Верде",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1033
+ },
+ {
+  "code": "DJF",
+  "kind": "FIAT",
+  "country": "DJ",
+  "nameEn": "Djiboutian Franc",
+  "nameRu": "франк Джибути",
+  "symbol": "Fdj",
+  "decimals": 0,
+  "rank": 1034
+ },
+ {
+  "code": "DOGE",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Dogecoin",
+  "nameRu": "Dogecoin",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1035
+ },
+ {
+  "code": "DOP",
+  "kind": "FIAT",
+  "country": "DO",
+  "nameEn": "Dominican Peso",
+  "nameRu": "доминиканский песо",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1036
+ },
+ {
+  "code": "DOT",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Polkadot",
+  "nameRu": "Polkadot",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1037
+ },
+ {
+  "code": "DZD",
+  "kind": "FIAT",
+  "country": "DZ",
+  "nameEn": "Algerian Dinar",
+  "nameRu": "алжирский динар",
+  "symbol": "د.ج",
+  "decimals": 2,
+  "rank": 1038
+ },
+ {
+  "code": "ERN",
+  "kind": "FIAT",
+  "country": "ER",
+  "nameEn": "Eritrean Nakfa",
+  "nameRu": "эритрейская накфа",
+  "symbol": "Nfk",
+  "decimals": 2,
+  "rank": 1039
+ },
+ {
+  "code": "ETB",
+  "kind": "FIAT",
+  "country": "ET",
+  "nameEn": "Ethiopian Birr",
+  "nameRu": "эфиопский быр",
+  "symbol": "Br",
+  "decimals": 2,
+  "rank": 1040
+ },
+ {
+  "code": "ETC",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Ethereum Classic",
+  "nameRu": "Ethereum Classic",
+  "symbol": "",
+  "decimals": 8,
+  "rank": 1041
+ },
+ {
+  "code": "FIL",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Filecoin",
+  "nameRu": "Filecoin",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1042
+ },
+ {
+  "code": "FJD",
+  "kind": "FIAT",
+  "country": "FJ",
+  "nameEn": "Fijian Dollar",
+  "nameRu": "доллар Фиджи",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1043
+ },
+ {
+  "code": "FKP",
+  "kind": "FIAT",
+  "country": "FK",
+  "nameEn": "Falkland Islands Pound",
+  "nameRu": "фунт Фолклендских островов",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1044
+ },
+ {
+  "code": "GGP",
+  "kind": "FIAT",
+  "country": "GG",
+  "nameEn": "Guernsey Pound",
+  "nameRu": "гернсийский фунт",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1045
+ },
+ {
+  "code": "GHS",
+  "kind": "FIAT",
+  "country": "GH",
+  "nameEn": "Ghanaian Cedi",
+  "nameRu": "ганский седи",
+  "symbol": "₵",
+  "decimals": 2,
+  "rank": 1046
+ },
+ {
+  "code": "GIP",
+  "kind": "FIAT",
+  "country": "GI",
+  "nameEn": "Gibraltar Pound",
+  "nameRu": "гибралтарский фунт",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1047
+ },
+ {
+  "code": "GMD",
+  "kind": "FIAT",
+  "country": "GM",
+  "nameEn": "Gambian Dalasi",
+  "nameRu": "гамбийский даласи",
+  "symbol": "D",
+  "decimals": 2,
+  "rank": 1048
+ },
+ {
+  "code": "GNF",
+  "kind": "FIAT",
+  "country": "GN",
+  "nameEn": "Guinean Franc",
+  "nameRu": "гвинейский франк",
+  "symbol": "Fr",
+  "decimals": 0,
+  "rank": 1049
+ },
+ {
+  "code": "GTQ",
+  "kind": "FIAT",
+  "country": "GT",
+  "nameEn": "Guatemalan Quetzal",
+  "nameRu": "гватемальский кетсаль",
+  "symbol": "Q",
+  "decimals": 2,
+  "rank": 1050
+ },
+ {
+  "code": "GYD",
+  "kind": "FIAT",
+  "country": "GY",
+  "nameEn": "Guyanaese Dollar",
+  "nameRu": "гайанский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1051
+ },
+ {
+  "code": "HBAR",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Hedera",
+  "nameRu": "Hedera",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1052
+ },
+ {
+  "code": "HNL",
+  "kind": "FIAT",
+  "country": "HN",
+  "nameEn": "Honduran Lempira",
+  "nameRu": "гондурасская лемпира",
+  "symbol": "L",
+  "decimals": 2,
+  "rank": 1053
+ },
+ {
+  "code": "HTG",
+  "kind": "FIAT",
+  "country": "HT",
+  "nameEn": "Haitian Gourde",
+  "nameRu": "гаитянский гурд",
+  "symbol": "G",
+  "decimals": 2,
+  "rank": 1054
+ },
+ {
+  "code": "ICP",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Internet Computer",
+  "nameRu": "Internet Computer",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1055
+ },
+ {
+  "code": "IMP",
+  "kind": "FIAT",
+  "country": "IM",
+  "nameEn": "Isle of Man Pound",
+  "nameRu": "мэнский фунт",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1056
+ },
+ {
+  "code": "IQD",
+  "kind": "FIAT",
+  "country": "IQ",
+  "nameEn": "Iraqi Dinar",
+  "nameRu": "иракский динар",
+  "symbol": "ع.د",
+  "decimals": 3,
+  "rank": 1057
+ },
+ {
+  "code": "IRR",
+  "kind": "FIAT",
+  "country": "IR",
+  "nameEn": "Iranian Rial",
+  "nameRu": "иранский риал",
+  "symbol": "﷼",
+  "decimals": 2,
+  "rank": 1058
+ },
+ {
+  "code": "ISK",
+  "kind": "FIAT",
+  "country": "IS",
+  "nameEn": "Icelandic Króna",
+  "nameRu": "исландская крона",
+  "symbol": "kr.",
+  "decimals": 0,
+  "rank": 1059
+ },
+ {
+  "code": "JEP",
+  "kind": "FIAT",
+  "country": "JE",
+  "nameEn": "Jersey Pound",
+  "nameRu": "джерсийский фунт",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1060
+ },
+ {
+  "code": "JMD",
+  "kind": "FIAT",
+  "country": "JM",
+  "nameEn": "Jamaican Dollar",
+  "nameRu": "ямайский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1061
+ },
+ {
+  "code": "JOD",
+  "kind": "FIAT",
+  "country": "JO",
+  "nameEn": "Jordanian Dinar",
+  "nameRu": "иорданский динар",
+  "symbol": "د.ا",
+  "decimals": 3,
+  "rank": 1062
+ },
+ {
+  "code": "KES",
+  "kind": "FIAT",
+  "country": "KE",
+  "nameEn": "Kenyan Shilling",
+  "nameRu": "кенийский шиллинг",
+  "symbol": "KSh",
+  "decimals": 2,
+  "rank": 1063
+ },
+ {
+  "code": "KHR",
+  "kind": "FIAT",
+  "country": "KH",
+  "nameEn": "Cambodian Riel",
+  "nameRu": "камбоджийский риель",
+  "symbol": "៛",
+  "decimals": 2,
+  "rank": 1064
+ },
+ {
+  "code": "KMF",
+  "kind": "FIAT",
+  "country": "KM",
+  "nameEn": "Comorian Franc",
+  "nameRu": "коморский франк",
+  "symbol": "Fr",
+  "decimals": 0,
+  "rank": 1065
+ },
+ {
+  "code": "KPW",
+  "kind": "FIAT",
+  "country": "KP",
+  "nameEn": "North Korean Won",
+  "nameRu": "северокорейская вона",
+  "symbol": "₩",
+  "decimals": 2,
+  "rank": 1066
+ },
+ {
+  "code": "KWD",
+  "kind": "FIAT",
+  "country": "KW",
+  "nameEn": "Kuwaiti Dinar",
+  "nameRu": "кувейтский динар",
+  "symbol": "د.ك",
+  "decimals": 3,
+  "rank": 1067
+ },
+ {
+  "code": "KYD",
+  "kind": "FIAT",
+  "country": "KY",
+  "nameEn": "Cayman Islands Dollar",
+  "nameRu": "доллар Островов Кайман",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1068
+ },
+ {
+  "code": "LAK",
+  "kind": "FIAT",
+  "country": "LA",
+  "nameEn": "Laotian Kip",
+  "nameRu": "лаосский кип",
+  "symbol": "₭",
+  "decimals": 2,
+  "rank": 1069
+ },
+ {
+  "code": "LBP",
+  "kind": "FIAT",
+  "country": "LB",
+  "nameEn": "Lebanese Pound",
+  "nameRu": "ливанский фунт",
+  "symbol": "ل.ل",
+  "decimals": 2,
+  "rank": 1070
+ },
+ {
+  "code": "LINK",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Chainlink",
+  "nameRu": "Chainlink",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1071
+ },
+ {
+  "code": "LKR",
+  "kind": "FIAT",
+  "country": "LK",
+  "nameEn": "Sri Lankan Rupee",
+  "nameRu": "шри-ланкийская рупия",
+  "symbol": "₨",
+  "decimals": 2,
+  "rank": 1072
+ },
+ {
+  "code": "LRD",
+  "kind": "FIAT",
+  "country": "LR",
+  "nameEn": "Liberian Dollar",
+  "nameRu": "либерийский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1073
+ },
+ {
+  "code": "LSL",
+  "kind": "FIAT",
+  "country": "LS",
+  "nameEn": "Lesotho Loti",
+  "nameRu": "Лоти",
+  "symbol": "L",
+  "decimals": 2,
+  "rank": 1074
+ },
+ {
+  "code": "LTC",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Litecoin",
+  "nameRu": "Litecoin",
+  "symbol": "Ł",
+  "decimals": 8,
+  "rank": 1075
+ },
+ {
+  "code": "LYD",
+  "kind": "FIAT",
+  "country": "LY",
+  "nameEn": "Libyan Dinar",
+  "nameRu": "ливийский динар",
+  "symbol": "ل.د",
+  "decimals": 3,
+  "rank": 1076
+ },
+ {
+  "code": "MAD",
+  "kind": "FIAT",
+  "country": "MA",
+  "nameEn": "Moroccan Dirham",
+  "nameRu": "марокканский дирхам",
+  "symbol": "د.م.",
+  "decimals": 2,
+  "rank": 1077
+ },
+ {
+  "code": "MGA",
+  "kind": "FIAT",
+  "country": "MG",
+  "nameEn": "Malagasy Ariary",
+  "nameRu": "малагасийский ариари",
+  "symbol": "Ar",
+  "decimals": 2,
+  "rank": 1078
+ },
+ {
+  "code": "MKD",
+  "kind": "FIAT",
+  "country": "MK",
+  "nameEn": "Macedonian Denar",
+  "nameRu": "македонский денар",
+  "symbol": "ден",
+  "decimals": 2,
+  "rank": 1079
+ },
+ {
+  "code": "MMK",
+  "kind": "FIAT",
+  "country": "MM",
+  "nameEn": "Myanmar Kyat",
+  "nameRu": "мьянманский кьят",
+  "symbol": "K",
+  "decimals": 2,
+  "rank": 1080
+ },
+ {
+  "code": "MOP",
+  "kind": "FIAT",
+  "country": "MO",
+  "nameEn": "Macanese Pataca",
+  "nameRu": "патака Макао",
+  "symbol": "P",
+  "decimals": 2,
+  "rank": 1081
+ },
+ {
+  "code": "MRO",
+  "kind": "FIAT",
+  "country": "MR",
+  "nameEn": "Mauritanian Ouguiya (1973–2017)",
+  "nameRu": "мавританская угия (1973–2017)",
+  "symbol": "UM",
+  "decimals": 2,
+  "rank": 1082
+ },
+ {
+  "code": "MRU",
+  "kind": "FIAT",
+  "country": "MR",
+  "nameEn": "Mauritanian Ouguiya",
+  "nameRu": "мавританская угия",
+  "symbol": "UM",
+  "decimals": 2,
+  "rank": 1083
+ },
+ {
+  "code": "MUR",
+  "kind": "FIAT",
+  "country": "MU",
+  "nameEn": "Mauritian Rupee",
+  "nameRu": "маврикийская рупия",
+  "symbol": "₨",
+  "decimals": 2,
+  "rank": 1084
+ },
+ {
+  "code": "MVR",
+  "kind": "FIAT",
+  "country": "MV",
+  "nameEn": "Maldivian Rufiyaa",
+  "nameRu": "мальдивская руфия",
+  "symbol": "MVR",
+  "decimals": 2,
+  "rank": 1085
+ },
+ {
+  "code": "MWK",
+  "kind": "FIAT",
+  "country": "MW",
+  "nameEn": "Malawian Kwacha",
+  "nameRu": "малавийская квача",
+  "symbol": "MK",
+  "decimals": 2,
+  "rank": 1086
+ },
+ {
+  "code": "MZN",
+  "kind": "FIAT",
+  "country": "MZ",
+  "nameEn": "Mozambican Metical",
+  "nameRu": "мозамбикский метикал",
+  "symbol": "MTn",
+  "decimals": 2,
+  "rank": 1087
+ },
+ {
+  "code": "NAD",
+  "kind": "FIAT",
+  "country": "NA",
+  "nameEn": "Namibian Dollar",
+  "nameRu": "доллар Намибии",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1088
+ },
+ {
+  "code": "NEAR",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "NEAR Protocol",
+  "nameRu": "NEAR Protocol",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1089
+ },
+ {
+  "code": "NGN",
+  "kind": "FIAT",
+  "country": "NG",
+  "nameEn": "Nigerian Naira",
+  "nameRu": "нигерийская найра",
+  "symbol": "₦",
+  "decimals": 2,
+  "rank": 1090
+ },
+ {
+  "code": "NIO",
+  "kind": "FIAT",
+  "country": "NI",
+  "nameEn": "Nicaraguan Córdoba",
+  "nameRu": "никарагуанская кордоба",
+  "symbol": "C$",
+  "decimals": 2,
+  "rank": 1091
+ },
+ {
+  "code": "NPR",
+  "kind": "FIAT",
+  "country": "NP",
+  "nameEn": "Nepalese Rupee",
+  "nameRu": "непальская рупия",
+  "symbol": "Rs.",
+  "decimals": 2,
+  "rank": 1092
+ },
+ {
+  "code": "OMR",
+  "kind": "FIAT",
+  "country": "OM",
+  "nameEn": "Omani Rial",
+  "nameRu": "оманский риал",
+  "symbol": "ر.ع.",
+  "decimals": 3,
+  "rank": 1093
+ },
+ {
+  "code": "OP",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Optimism",
+  "nameRu": "Optimism",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1094
+ },
+ {
+  "code": "PAB",
+  "kind": "FIAT",
+  "country": "PA",
+  "nameEn": "Panamanian Balboa",
+  "nameRu": "панамский бальбоа",
+  "symbol": "B/.",
+  "decimals": 2,
+  "rank": 1095
+ },
+ {
+  "code": "PAXG",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "PAX Gold",
+  "nameRu": "PAX Gold",
+  "symbol": "",
+  "decimals": 8,
+  "rank": 1096
+ },
+ {
+  "code": "PEN",
+  "kind": "FIAT",
+  "country": "PE",
+  "nameEn": "Peruvian Sol",
+  "nameRu": "перуанский соль",
+  "symbol": "S/",
+  "decimals": 2,
+  "rank": 1097
+ },
+ {
+  "code": "PGK",
+  "kind": "FIAT",
+  "country": "PG",
+  "nameEn": "Papua New Guinean Kina",
+  "nameRu": "кина Папуа – Новой Гвинеи",
+  "symbol": "K",
+  "decimals": 2,
+  "rank": 1098
+ },
+ {
+  "code": "PKR",
+  "kind": "FIAT",
+  "country": "PK",
+  "nameEn": "Pakistani Rupee",
+  "nameRu": "пакистанская рупия",
+  "symbol": "₨",
+  "decimals": 2,
+  "rank": 1099
+ },
+ {
+  "code": "PYG",
+  "kind": "FIAT",
+  "country": "PY",
+  "nameEn": "Paraguayan Guarani",
+  "nameRu": "парагвайский гуарани",
+  "symbol": "₲",
+  "decimals": 0,
+  "rank": 1100
+ },
+ {
+  "code": "RWF",
+  "kind": "FIAT",
+  "country": "RW",
+  "nameEn": "Rwandan Franc",
+  "nameRu": "франк Руанды",
+  "symbol": "FRw",
+  "decimals": 0,
+  "rank": 1101
+ },
+ {
+  "code": "SBD",
+  "kind": "FIAT",
+  "country": "SB",
+  "nameEn": "Solomon Islands Dollar",
+  "nameRu": "доллар Соломоновых Островов",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1102
+ },
+ {
+  "code": "SCR",
+  "kind": "FIAT",
+  "country": "SC",
+  "nameEn": "Seychellois Rupee",
+  "nameRu": "сейшельская рупия",
+  "symbol": "₨",
+  "decimals": 2,
+  "rank": 1103
+ },
+ {
+  "code": "SDG",
+  "kind": "FIAT",
+  "country": "SD",
+  "nameEn": "Sudanese Pound",
+  "nameRu": "суданский фунт",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1104
+ },
+ {
+  "code": "SHIB",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Shiba Inu",
+  "nameRu": "Shiba Inu",
+  "symbol": "",
+  "decimals": 8,
+  "rank": 1105
+ },
+ {
+  "code": "SHP",
+  "kind": "FIAT",
+  "country": "SH",
+  "nameEn": "St. Helena Pound",
+  "nameRu": "фунт острова Святой Елены",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1106
+ },
+ {
+  "code": "SLE",
+  "kind": "FIAT",
+  "country": "SL",
+  "nameEn": "Sierra Leonean Leone",
+  "nameRu": "Sierra Leonean Leone",
+  "symbol": "Le",
+  "decimals": 2,
+  "rank": 1107
+ },
+ {
+  "code": "SOL",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Solana",
+  "nameRu": "Solana",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1108
+ },
+ {
+  "code": "SOS",
+  "kind": "FIAT",
+  "country": "SO",
+  "nameEn": "Somali Shilling",
+  "nameRu": "сомалийский шиллинг",
+  "symbol": "Sh",
+  "decimals": 2,
+  "rank": 1109
+ },
+ {
+  "code": "SRD",
+  "kind": "FIAT",
+  "country": "SR",
+  "nameEn": "Surinamese Dollar",
+  "nameRu": "суринамский доллар",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1110
+ },
+ {
+  "code": "SSP",
+  "kind": "FIAT",
+  "country": "SS",
+  "nameEn": "South Sudanese Pound",
+  "nameRu": "южносуданский фунт",
+  "symbol": "£",
+  "decimals": 2,
+  "rank": 1111
+ },
+ {
+  "code": "STN",
+  "kind": "FIAT",
+  "country": "ST",
+  "nameEn": "São Tomé & Príncipe Dobra",
+  "nameRu": "добра Сан-Томе и Принсипи",
+  "symbol": "Db",
+  "decimals": 2,
+  "rank": 1112
+ },
+ {
+  "code": "SUI",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Sui",
+  "nameRu": "Sui",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1113
+ },
+ {
+  "code": "SVC",
+  "kind": "FIAT",
+  "country": "SV",
+  "nameEn": "Salvadoran Colón",
+  "nameRu": "Сальвадорский колон",
+  "symbol": "₡",
+  "decimals": 2,
+  "rank": 1114
+ },
+ {
+  "code": "SYP",
+  "kind": "FIAT",
+  "country": "SY",
+  "nameEn": "Syrian Pound",
+  "nameRu": "сирийский фунт",
+  "symbol": "£S",
+  "decimals": 2,
+  "rank": 1115
+ },
+ {
+  "code": "SZL",
+  "kind": "FIAT",
+  "country": "SZ",
+  "nameEn": "Swazi Lilangeni",
+  "nameRu": "свазилендский лилангени",
+  "symbol": "E",
+  "decimals": 2,
+  "rank": 1116
+ },
+ {
+  "code": "TND",
+  "kind": "FIAT",
+  "country": "TN",
+  "nameEn": "Tunisian Dinar",
+  "nameRu": "тунисский динар",
+  "symbol": "د.ت",
+  "decimals": 3,
+  "rank": 1117
+ },
+ {
+  "code": "TON",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Toncoin",
+  "nameRu": "Toncoin",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1118
+ },
+ {
+  "code": "TOP",
+  "kind": "FIAT",
+  "country": "TO",
+  "nameEn": "Tongan Paʻanga",
+  "nameRu": "тонганская паанга",
+  "symbol": "T$",
+  "decimals": 2,
+  "rank": 1119
+ },
+ {
+  "code": "TRX",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "TRON",
+  "nameRu": "TRON",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1120
+ },
+ {
+  "code": "TTD",
+  "kind": "FIAT",
+  "country": "TT",
+  "nameEn": "Trinidad & Tobago Dollar",
+  "nameRu": "доллар Тринидада и Тобаго",
+  "symbol": "$",
+  "decimals": 2,
+  "rank": 1121
+ },
+ {
+  "code": "TZS",
+  "kind": "FIAT",
+  "country": "TZ",
+  "nameEn": "Tanzanian Shilling",
+  "nameRu": "танзанийский шиллинг",
+  "symbol": "Sh",
+  "decimals": 2,
+  "rank": 1122
+ },
+ {
+  "code": "UGX",
+  "kind": "FIAT",
+  "country": "UG",
+  "nameEn": "Ugandan Shilling",
+  "nameRu": "угандийский шиллинг",
+  "symbol": "USh",
+  "decimals": 0,
+  "rank": 1123
+ },
+ {
+  "code": "UNI",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Uniswap",
+  "nameRu": "Uniswap",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1124
+ },
+ {
+  "code": "USDC",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "USD Coin",
+  "nameRu": "USD Coin",
+  "symbol": "",
+  "decimals": 4,
+  "rank": 1125
+ },
+ {
+  "code": "UYU",
+  "kind": "FIAT",
+  "country": "UY",
+  "nameEn": "Uruguayan Peso",
+  "nameRu": "уругвайский песо",
+  "symbol": "$U",
+  "decimals": 2,
+  "rank": 1126
+ },
+ {
+  "code": "VES",
+  "kind": "FIAT",
+  "country": "VE",
+  "nameEn": "Venezuelan Bolívar",
+  "nameRu": "венесуэльский боливар",
+  "symbol": "Bs",
+  "decimals": 2,
+  "rank": 1127
+ },
+ {
+  "code": "VUV",
+  "kind": "FIAT",
+  "country": "VU",
+  "nameEn": "Vanuatu Vatu",
+  "nameRu": "вату Вануату",
+  "symbol": "Vt",
+  "decimals": 0,
+  "rank": 1128
+ },
+ {
+  "code": "WST",
+  "kind": "FIAT",
+  "country": "WS",
+  "nameEn": "Samoan Tala",
+  "nameRu": "самоанская тала",
+  "symbol": "T",
+  "decimals": 2,
+  "rank": 1129
+ },
+ {
+  "code": "XAF",
+  "kind": "FIAT",
+  "country": null,
+  "nameEn": "Central African CFA Franc",
+  "nameRu": "франк КФА BEAC",
+  "symbol": "FCFA",
+  "decimals": 0,
+  "rank": 1130
+ },
+ {
+  "code": "XCD",
+  "kind": "FIAT",
+  "country": null,
+  "nameEn": "East Caribbean Dollar",
+  "nameRu": "восточно-карибский доллар",
+  "symbol": "EC$",
+  "decimals": 2,
+  "rank": 1131
+ },
+ {
+  "code": "XCG",
+  "kind": "FIAT",
+  "country": "CW",
+  "nameEn": "Caribbean Guilder",
+  "nameRu": "Caribbean Guilder",
+  "symbol": "Cg",
+  "decimals": 2,
+  "rank": 1132
+ },
+ {
+  "code": "XDR",
+  "kind": "FIAT",
+  "country": null,
+  "nameEn": "Special Drawing Rights",
+  "nameRu": "СДР (специальные права заимствования)",
+  "symbol": "SDR",
+  "decimals": 2,
+  "rank": 1133
+ },
+ {
+  "code": "XLM",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Stellar",
+  "nameRu": "Stellar",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1134
+ },
+ {
+  "code": "XMR",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Monero",
+  "nameRu": "Monero",
+  "symbol": "ɱ",
+  "decimals": 8,
+  "rank": 1135
+ },
+ {
+  "code": "XOF",
+  "kind": "FIAT",
+  "country": null,
+  "nameEn": "West African CFA Franc",
+  "nameRu": "франк КФА ВСЕАО",
+  "symbol": "F CFA",
+  "decimals": 0,
+  "rank": 1136
+ },
+ {
+  "code": "XPD",
+  "kind": "METAL",
+  "country": null,
+  "nameEn": "Palladium (troy ounce)",
+  "nameRu": "Палладий (тройская унция)",
+  "symbol": "oz t",
+  "decimals": 4,
+  "rank": 1137
+ },
+ {
+  "code": "XPF",
+  "kind": "FIAT",
+  "country": null,
+  "nameEn": "CFP Franc",
+  "nameRu": "французский тихоокеанский франк",
+  "symbol": "CFPF",
+  "decimals": 0,
+  "rank": 1138
+ },
+ {
+  "code": "XPT",
+  "kind": "METAL",
+  "country": null,
+  "nameEn": "Platinum (troy ounce)",
+  "nameRu": "Платина (тройская унция)",
+  "symbol": "oz t",
+  "decimals": 4,
+  "rank": 1139
+ },
+ {
+  "code": "XRP",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "XRP",
+  "nameRu": "XRP",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1140
+ },
+ {
+  "code": "XTZ",
+  "kind": "CRYPTO",
+  "country": null,
+  "nameEn": "Tezos",
+  "nameRu": "Tezos",
+  "symbol": "",
+  "decimals": 6,
+  "rank": 1141
+ },
+ {
+  "code": "YER",
+  "kind": "FIAT",
+  "country": "YE",
+  "nameEn": "Yemeni Rial",
+  "nameRu": "йеменский риал",
+  "symbol": "﷼",
+  "decimals": 2,
+  "rank": 1142
+ },
+ {
+  "code": "ZMW",
+  "kind": "FIAT",
+  "country": "ZM",
+  "nameEn": "Zambian Kwacha",
+  "nameRu": "замбийская квача",
+  "symbol": "K",
+  "decimals": 2,
+  "rank": 1143
+ },
+ {
+  "code": "ZWG",
+  "kind": "FIAT",
+  "country": "ZW",
+  "nameEn": "Zimbabwe Gold",
+  "nameRu": "Zimbabwe Gold",
+  "symbol": "ZiG",
+  "decimals": 2,
+  "rank": 1144
+ }
+]

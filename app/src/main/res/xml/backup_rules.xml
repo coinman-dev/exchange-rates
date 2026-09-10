@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Резервируем настройки и список валют пользователя.
+  Кэш курсов входит в ту же базу; он маленький и обновляется при первом запуске.
+-->
+<full-backup-content>
+    <include domain="sharedpref" path="." />
+    <include domain="file" path="datastore" />
+    <include domain="database" path="exchange_rates.db" />
+</full-backup-content>

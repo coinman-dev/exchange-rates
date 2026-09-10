@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Exchange Rates</string>
+
+    <!-- converter -->
+    <string name="convert_title">Convert</string>
+    <string name="rates_title">Rates</string>
+    <string name="you_convert">You convert</string>
+    <string name="add_another_currency">Add another currency</string>
+    <string name="replace_currency">Replace currency</string>
+    <string name="no_rate">no rate</string>
+    <string name="loading_rates">Loading rates…</string>
+
+    <!-- footer -->
+    <string name="updated_at">Last updated: %1$s</string>
+    <string name="updated_offline">Offline · data from %1$s</string>
+    <string name="updated_never">No data yet</string>
+    <string name="cb_rate_on_date">Official rate as of %1$s</string>
+
+    <!-- rate modes -->
+    <string name="rate_mode_mid_short">Mid-market rates</string>
+    <string name="rate_mode_cbr_short">CBR rate</string>
+    <string name="rate_mode_tcmb_short">CBRT rate</string>
+    <string name="rate_mode_nbk_short">NBK rate</string>
+    <string name="rate_mode_mid">Mid-market (market midpoint)</string>
+    <string name="rate_mode_cbr">Central Bank of Russia</string>
+    <string name="rate_mode_tcmb">Central Bank of Türkiye</string>
+    <string name="rate_mode_nbk">National Bank of Kazakhstan</string>
+
+    <!-- sources dialog -->
+    <string name="sources_title">Rates and sources</string>
+    <string name="rate_mode_section">Rate type</string>
+    <string name="sources_section">Data sources</string>
+    <string name="sources_empty">No source information yet. Pull to refresh.</string>
+    <string name="sources_used_for">%1$d rates</string>
+    <string name="sources_error">Error: %1$s</string>
+    <string name="sources_no_data">No data</string>
+    <string name="disclaimer">Rates are informational and are not an offer to exchange currency. Crypto prices from Binance are quoted in USDT and treated as 1:1 with the US dollar.</string>
+    <string name="close">Close</string>
+
+    <!-- picker -->
+    <string name="search_currency">Code, name or country</string>
+    <string name="picker_nothing_found">Nothing found</string>
+    <string name="filter_popular">Popular</string>
+    <string name="filter_all">All</string>
+    <string name="filter_fiat">Currencies</string>
+    <string name="filter_crypto">Crypto</string>
+    <string name="filter_metals">Metals</string>
+
+    <!-- card actions -->
+    <string name="action_make_base">Make base currency</string>
+    <string name="action_move_up">Move up</string>
+    <string name="action_move_down">Move down</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_open_chart">Open chart</string>
+
+    <!-- tabs -->
+    <string name="tab_home">Home</string>
+    <string name="tab_chart">Chart</string>
+    <string name="tab_more">More</string>
+
+    <!-- chart -->
+    <string name="chart_title">Chart</string>
+    <string name="chart_pick_pair">Currency pair</string>
+    <string name="chart_min">Min</string>
+    <string name="chart_max">Max</string>
+    <string name="chart_avg">Average</string>
+    <string name="chart_change">Change</string>
+    <string name="chart_no_data">No history for this pair and period</string>
+    <string name="chart_loading">Loading history…</string>
+    <string name="chart_swap">Swap</string>
+
+    <!-- more / settings -->
+    <string name="more_title">More</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="settings_language">Language</string>
+    <string name="language_system">System</string>
+    <string name="language_ru">Русский</string>
+    <string name="language_en">English</string>
+    <string name="settings_numbers">Numbers</string>
+    <string name="settings_decimals">Decimal places</string>
+    <string name="settings_grouping">Group thousands</string>
+    <string name="settings_show_change">Show 24h change</string>
+    <string name="settings_rates">Rates</string>
+    <string name="settings_rate_mode">Rate type</string>
+    <string name="settings_sync">Updates</string>
+    <string name="settings_wifi_only">Background sync on Wi-Fi only</string>
+    <string name="settings_interval">Background sync every %1$d h</string>
+    <string name="settings_refresh_now">Refresh now</string>
+    <string name="settings_about">About</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_sources">Data sources and rate type</string>
+    <string name="about_offline">Works offline: the last downloaded rates are stored on the device.</string>
+
+    <!-- rates overview -->
+    <string name="rates_overview_hint">Rates against %1$s</string>
+</resources>
