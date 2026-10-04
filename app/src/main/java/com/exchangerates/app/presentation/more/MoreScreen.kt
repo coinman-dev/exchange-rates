@@ -162,7 +162,7 @@ fun MoreScreen(
                 Image(
                     painter = painterResource(R.drawable.logo_about),
                     contentDescription = stringResource(R.string.app_name),
-                    modifier = Modifier.size(144.dp),
+                    modifier = Modifier.size(216.dp),
                 )
             }
             Text(

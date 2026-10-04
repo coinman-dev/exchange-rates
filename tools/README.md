@@ -23,10 +23,10 @@ python3 gen_catalog.py
 
 ## Логотип и значок приложения
 
-`make_logo.sh` вырезает из `images/logos-orig.png` два круга и собирает из них
-ресурсы (нужен ImageMagick 7):
+`make_logo.sh` собирает ресурсы из двух круглых логотипов в `images/`:
+`logo-round.png` (без надписи) и `logo-text-round.png` (с надписью). Сами эти
+файлы скрипт только читает. Нужен ImageMagick 7.
 
-- `images/logo-round.png` и `images/logo-text-round.png` — круги без надписи и с надписью;
 - `res/drawable-nodpi/logo_about.webp` — логотип в разделе «О приложении»;
 - `res/mipmap-*/ic_launcher_foreground.webp` и `ic_launcher_monochrome.webp` — слои
   адаптивного значка приложения.
