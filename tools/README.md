@@ -20,3 +20,17 @@ python3 gen_catalog.py
 ```
 
 Названия и символы валют берутся из ICU (JDK), поэтому русские названия совпадают с системными.
+
+## Логотип и значок приложения
+
+`make_logo.sh` вырезает из `images/logos-orig.png` два круга и собирает из них
+ресурсы (нужен ImageMagick 7):
+
+- `images/logo-round.png` и `images/logo-text-round.png` — круги без надписи и с надписью;
+- `res/drawable-nodpi/logo_about.webp` — логотип в разделе «О приложении»;
+- `res/mipmap-*/ic_launcher_foreground.webp` и `ic_launcher_monochrome.webp` — слои
+  адаптивного значка приложения.
+
+```bash
+tools/make_logo.sh
+```
