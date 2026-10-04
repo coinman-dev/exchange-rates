@@ -80,13 +80,14 @@ GitHub Actions — в [`secrets/README.md`](secrets/README.md).
 
 ## Выпуск версий
 
-Тег вида `v0.1.0-beta` запускает на GitHub Actions сборку подписанного APK и
+Тег вида `v1.0.0` запускает на GitHub Actions сборку подписанного APK и
 публикует его в разделе [Releases](../../releases). Тег с дефисом (`alpha`,
 `beta`, `rc`) публикуется как пререлиз. Тег должен совпадать с `versionName` в
-`app/build.gradle.kts`:
+`app/build.gradle.kts`, а `versionCode` — расти с каждым выпуском. Описание
+релиза берётся из `.github/release-notes/<тег>.md`, если такой файл есть:
 
 ```bash
-git tag v0.1.0-beta && git push origin v0.1.0-beta
+git tag v1.0.0 && git push origin v1.0.0
 ```
 
 ## Стек

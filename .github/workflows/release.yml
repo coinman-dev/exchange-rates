@@ -1,7 +1,8 @@
 name: Release
 
-# Тег вида v0.1.0-beta запускает сборку подписанного APK и публикует его в
-# GitHub Releases. Тег с дефисом (alpha, beta, rc) публикуется как пререлиз.
+# Тег вида v1.0.0 запускает сборку подписанного APK и публикует его в GitHub
+# Releases. Тег с дефисом (alpha, beta, rc) публикуется как пререлиз. Описание
+# релиза берётся из .github/release-notes/<тег>.md, если такой файл есть.
 on:
   push:
     tags: ["v*"]
@@ -80,5 +81,7 @@ jobs:
           cp app/build/outputs/apk/release/app-release.apk "$apk"
           flags=()
           case "$GITHUB_REF_NAME" in *-*) flags+=(--prerelease) ;; esac
+          notes=".github/release-notes/$GITHUB_REF_NAME.md"
+          if [ -f "$notes" ]; then flags+=(--notes-file "$notes"); else flags+=(--generate-notes); fi
           gh release create "$GITHUB_REF_NAME" "$apk" \
-            --title "$GITHUB_REF_NAME" --generate-notes --verify-tag "${flags[@]}"
+            --title "$GITHUB_REF_NAME" --verify-tag "${flags[@]}"

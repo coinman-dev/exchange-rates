@@ -80,13 +80,15 @@ JDK 21 (Robolectric needs it for SDK 36+), the path is set in
 
 ## Releases
 
-A tag of the form `v0.1.0-beta` makes GitHub Actions build a signed APK and
+A tag of the form `v1.0.0` makes GitHub Actions build a signed APK and
 publish it under [Releases](../../releases). A tag with a hyphen (`alpha`,
 `beta`, `rc`) is published as a pre-release. The tag has to match `versionName`
-in `app/build.gradle.kts`:
+in `app/build.gradle.kts`, and `versionCode` has to grow with every release. The
+release description is taken from `.github/release-notes/<tag>.md` when that
+file exists:
 
 ```bash
-git tag v0.1.0-beta && git push origin v0.1.0-beta
+git tag v1.0.0 && git push origin v1.0.0
 ```
 
 ## Stack
