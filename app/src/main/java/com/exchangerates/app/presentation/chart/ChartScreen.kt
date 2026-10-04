@@ -234,7 +234,7 @@ private fun CodeChip(code: String, onClick: () -> Unit, modifier: Modifier = Mod
         modifier = modifier
             .background(colors.surface, RoundedCornerShape(16.dp))
             .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 14.dp),
+            .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
@@ -289,7 +289,7 @@ private fun StatsBlock(
         modifier = Modifier
             .fillMaxWidth()
             .background(colors.surface, RoundedCornerShape(AppDimens.cardCorner))
-            .padding(18.dp),
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         StatRow(stringResource(R.string.chart_min), minText, colors.textPrimary)

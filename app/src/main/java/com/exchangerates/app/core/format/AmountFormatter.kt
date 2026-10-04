@@ -25,8 +25,14 @@ class AmountFormatter(locale: Locale = Locale.getDefault()) {
      *
      * @param decimals «штатное» число знаков валюты (2 для фиата, 8 для крипты)
      * @param grouped разделять ли разряды
+     * @param exact точность выбрана в настройках: крупные значения не укорачиваются
      */
-    fun formatAmount(value: BigDecimal, decimals: Int, grouped: Boolean = true): String {
+    fun formatAmount(
+        value: BigDecimal,
+        decimals: Int,
+        grouped: Boolean = true,
+        exact: Boolean = false,
+    ): String {
         if (value.signum() == 0) return pattern(decimals, grouped).format(BigDecimal.ZERO)
         val abs = value.abs()
         val rounded = value.setScale(decimals, RoundingMode.HALF_EVEN)
@@ -35,7 +41,7 @@ class AmountFormatter(locale: Locale = Locale.getDefault()) {
             return formatSignificant(value, SIGNIFICANT_DIGITS_SMALL, grouped)
         }
         // очень большие значения крипты/слабых валют не нужны с 8 знаками
-        val effective = if (abs >= BigDecimal.ONE && decimals > 4) 4 else decimals
+        val effective = if (!exact && abs >= BigDecimal.ONE && decimals > 4) 4 else decimals
         val text = pattern(effective, grouped).format(value)
         return if (effective > 2) text.trimTrailingZeros() else text
     }
@@ -65,9 +71,9 @@ class AmountFormatter(locale: Locale = Locale.getDefault()) {
     }
 
     /** Текст, который подставляется в поле ввода при фокусе. */
-    fun formatForEditing(value: BigDecimal, decimals: Int): String {
+    fun formatForEditing(value: BigDecimal, decimals: Int, exact: Boolean = false): String {
         if (value.signum() == 0) return ""
-        val effective = if (value.abs() >= BigDecimal.ONE && decimals > 4) 4 else decimals
+        val effective = if (!exact && value.abs() >= BigDecimal.ONE && decimals > 4) 4 else decimals
         val rounded = value.setScale(effective, RoundingMode.HALF_EVEN)
         val plain = (if (rounded.signum() == 0) value.round(MathContext(SIGNIFICANT_DIGITS_SMALL)) else rounded)
             .stripTrailingZeros()

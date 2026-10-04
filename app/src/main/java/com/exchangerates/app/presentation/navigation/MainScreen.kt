@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,8 +38,9 @@ private enum class HomeMode { RATES, CONVERTER }
 @Composable
 fun MainScreen() {
     val colors = AppTheme.colors
-    var tab by remember { mutableStateOf(AppTab.HOME) }
-    var homeMode by remember { mutableStateOf(HomeMode.CONVERTER) }
+    // rememberSaveable: при смене языка Activity пересоздаётся, вкладка должна остаться
+    var tab by rememberSaveable { mutableStateOf(AppTab.HOME) }
+    var homeMode by rememberSaveable { mutableStateOf(HomeMode.CONVERTER) }
 
     val converterViewModel: ConverterViewModel = hiltViewModel()
     val chartViewModel: ChartViewModel = hiltViewModel()

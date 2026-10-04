@@ -15,6 +15,8 @@ import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.ShowChart
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.VerticalAlignBottom
+import androidx.compose.material.icons.filled.VerticalAlignTop
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -40,13 +42,16 @@ fun CardActionsSheet(
     canRemove: Boolean,
     onDismiss: () -> Unit,
     onMakeBase: () -> Unit,
+    onMoveToTop: () -> Unit,
     onMoveUp: () -> Unit,
     onMoveDown: () -> Unit,
+    onMoveToBottom: () -> Unit,
     onRemove: () -> Unit,
     onOpenChart: () -> Unit,
 ) {
     val colors = AppTheme.colors
-    val sheetState = rememberModalBottomSheetState()
+    // с семью действиями лист выше половины экрана: без этого «Удалить» остаётся за краем
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
@@ -63,11 +68,21 @@ fun CardActionsSheet(
             Spacer(Modifier.height(10.dp))
             if (!isBase) {
                 ActionRow(Icons.Filled.Star, stringResource(R.string.action_make_base), onMakeBase)
+                ActionRow(
+                    Icons.Filled.VerticalAlignTop,
+                    stringResource(R.string.action_move_top),
+                    onMoveToTop,
+                )
                 ActionRow(Icons.Filled.ArrowUpward, stringResource(R.string.action_move_up), onMoveUp)
                 ActionRow(
                     Icons.Filled.ArrowDownward,
                     stringResource(R.string.action_move_down),
                     onMoveDown,
+                )
+                ActionRow(
+                    Icons.Filled.VerticalAlignBottom,
+                    stringResource(R.string.action_move_bottom),
+                    onMoveToBottom,
                 )
             }
             ActionRow(Icons.Filled.ShowChart, stringResource(R.string.action_open_chart), onOpenChart)

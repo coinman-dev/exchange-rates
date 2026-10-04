@@ -1,5 +1,6 @@
 package com.exchangerates.app.presentation.converter
 
+import android.content.res.Resources
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -41,6 +42,7 @@ private data class Anchor(val code: String, val amount: BigDecimal)
 private data class Editing(
     val activeCode: String? = null,
     val input: TextFieldValue = TextFieldValue(),
+    /** В поле стоит подставленная сумма: цифра начнёт новое число, оператор продолжит это. */
     val pristine: Boolean = true,
     val error: Boolean = false,
 )
@@ -141,8 +143,14 @@ class ConverterViewModel @Inject constructor(
                 currency = currency,
                 isBase = code == baseCode,
                 amount = amount,
-                amountText = amount?.let { formatter.formatAmount(it, decimals, appSettings.grouping) }
-                    ?: "",
+                amountText = amount?.let {
+                    formatter.formatAmount(
+                        value = it,
+                        decimals = decimals,
+                        grouped = appSettings.grouping,
+                        exact = usesSettingsDecimals(currency),
+                    )
+                } ?: "",
                 unitRateText = unitRate?.let {
                     "1 $baseCode → ${formatter.formatUnitRate(it)} $code"
                 },
@@ -170,23 +178,27 @@ class ConverterViewModel @Inject constructor(
         )
     }
 
-    private fun decimalsFor(currency: Currency, settingsDecimals: Int): Int = when {
-        currency.kind == com.exchangerates.app.domain.model.CurrencyKind.CRYPTO -> currency.decimals
-        currency.kind == com.exchangerates.app.domain.model.CurrencyKind.METAL -> currency.decimals
-        else -> settingsDecimals
-    }
+    /** Для фиата число знаков задаёт пользователь, у крипты и металлов оно своё. */
+    private fun usesSettingsDecimals(currency: Currency): Boolean =
+        currency.kind == com.exchangerates.app.domain.model.CurrencyKind.FIAT
+
+    private fun decimalsFor(currency: Currency, settingsDecimals: Int): Int =
+        if (usesSettingsDecimals(currency)) settingsDecimals else currency.decimals
 
     private fun isRussian(language: AppLanguage): Boolean = when (language) {
         AppLanguage.RUSSIAN -> true
         AppLanguage.ENGLISH -> false
-        AppLanguage.SYSTEM -> Locale.getDefault().language == "ru"
+        AppLanguage.SYSTEM -> systemLocale().language == "ru"
     }
 
     private fun localeOf(language: AppLanguage): Locale = when (language) {
         AppLanguage.RUSSIAN -> Locale.forLanguageTag("ru")
         AppLanguage.ENGLISH -> Locale.forLanguageTag("en")
-        AppLanguage.SYSTEM -> Locale.getDefault()
+        AppLanguage.SYSTEM -> systemLocale()
     }
+
+    /** Locale.getDefault() не годится: её подменяет явно выбранный язык приложения. */
+    private fun systemLocale(): Locale = Resources.getSystem().configuration.locales[0]
 
     // ---------- действия пользователя ----------
 
@@ -194,9 +206,7 @@ class ConverterViewModel @Inject constructor(
         val row = state.value.rows.firstOrNull { it.currency.code == code } ?: return
         // в поле подставляется значение без разделителей разрядов, иначе
         // «8 433,00 + 50» невозможно разобрать как выражение
-        val editable = row.amount?.let {
-            formatter().formatForEditing(it, decimalsFor(row.currency, currentSettings.decimals))
-        }.orEmpty()
+        val editable = row.amount?.let { editingText(row.currency, it) }.orEmpty()
         editing.value = Editing(
             activeCode = code,
             input = textFieldValue(editable),
@@ -208,8 +218,14 @@ class ConverterViewModel @Inject constructor(
     fun onInputChanged(value: TextFieldValue) {
         val current = editing.value
         val activeCode = current.activeCode ?: return
-        editing.value = current.copy(input = value, pristine = false, error = false)
-        recalculate(activeCode, value.text)
+        if (current.pristine && value.text == current.input.text) {
+            // передвинули курсор: сумма по-прежнему подставленная, пересчитывать нечего
+            editing.value = current.copy(input = value)
+            return
+        }
+        val input = if (current.pristine) editPristineInput(current.input, value) else value
+        editing.value = current.copy(input = input, pristine = false, error = false)
+        recalculate(activeCode, input.text)
     }
 
     fun onOperator(operator: MathOperator) {
@@ -262,7 +278,8 @@ class ConverterViewModel @Inject constructor(
                 editing.value = Editing(
                     activeCode = if (keepActive) code else null,
                     input = if (keepActive) textFieldValue(formatted) else TextFieldValue(),
-                    pristine = false,
+                    // результат после «=» — тоже подставленная сумма
+                    pristine = true,
                     error = false,
                 )
             }
@@ -291,9 +308,16 @@ class ConverterViewModel @Inject constructor(
 
     private fun formattedForEditing(code: String, value: BigDecimal): String {
         val currency = state.value.catalog.firstOrNull { it.code == code }
-        val decimals = currency?.let { decimalsFor(it, currentSettings.decimals) } ?: 2
-        return formatter().formatForEditing(value, decimals)
+            ?: return formatter().formatForEditing(value, 2)
+        return editingText(currency, value)
     }
+
+    private fun editingText(currency: Currency, value: BigDecimal): String =
+        formatter().formatForEditing(
+            value,
+            decimalsFor(currency, currentSettings.decimals),
+            exact = usesSettingsDecimals(currency),
+        )
 
     private fun formatter() = AmountFormatter(localeOf(currentSettings.language))
 

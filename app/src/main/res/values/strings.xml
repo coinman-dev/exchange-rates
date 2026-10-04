@@ -57,8 +57,10 @@
 
     <!-- card actions -->
     <string name="action_make_base">Make base currency</string>
+    <string name="action_move_top">Move to top</string>
     <string name="action_move_up">Move up</string>
     <string name="action_move_down">Move down</string>
+    <string name="action_move_bottom">Move to bottom</string>
     <string name="action_remove">Remove</string>
     <string name="action_open_chart">Open chart</string>
 
@@ -82,11 +84,11 @@
     <string name="more_title">More</string>
     <string name="settings_appearance">Appearance</string>
     <string name="settings_theme">Theme</string>
-    <string name="theme_system">System</string>
+    <string name="theme_system">Auto</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="settings_language">Language</string>
-    <string name="language_system">System</string>
+    <string name="language_system">Auto</string>
     <string name="language_ru">Русский</string>
     <string name="language_en">English</string>
     <string name="settings_numbers">Numbers</string>

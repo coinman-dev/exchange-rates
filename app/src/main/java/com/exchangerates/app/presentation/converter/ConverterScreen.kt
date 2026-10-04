@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
@@ -29,6 +31,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
@@ -50,6 +53,7 @@ import com.exchangerates.app.presentation.picker.CardActionsSheet
 import com.exchangerates.app.presentation.more.SourcesDialog
 import com.exchangerates.app.presentation.util.formatUpdatedAt
 import com.exchangerates.app.presentation.util.rateModeShortLabel
+import kotlinx.coroutines.flow.collectLatest
 
 /** Что открыто поверх экрана. */
 private sealed interface Overlay {
@@ -91,7 +95,16 @@ fun ConverterScreen(
         if (!imeVisible && state.activeCode != null) onDismissEditing()
     }
 
-    Box(modifier = modifier.fillMaxSize().background(colors.background)) {
+    // клавиатура и панель операторов сужают список снизу — активная карточка
+    // поднимается вместе с ними
+    val activeIndex = state.activeCode?.let(state::listIndexOf) ?: -1
+    LaunchedEffect(activeIndex) {
+        if (activeIndex < 0) return@LaunchedEffect
+        snapshotFlow { listState.layoutInfo.run { viewportEndOffset - afterContentPadding } }
+            .collectLatest { listState.revealAboveBottomPadding(activeIndex) }
+    }
+
+    Box(modifier = modifier.fillMaxSize().background(colors.background).imePadding()) {
         PullToRefreshBox(
             isRefreshing = state.isRefreshing,
             onRefresh = onRefresh,
@@ -104,10 +117,17 @@ fun ConverterScreen(
                     start = AppDimens.screenPadding,
                     end = AppDimens.screenPadding,
                     top = 8.dp,
-                    bottom = AppDimens.bottomBarSpace,
+                    bottom = if (state.activeCode != null) {
+                        AppDimens.operatorBarSpace
+                    } else {
+                        AppDimens.bottomBarSpace
+                    },
                 ),
                 verticalArrangement = Arrangement.spacedBy(AppDimens.cardGap),
             ) {
+                // пока валюты не загружены, пунктов нет вовсе: иначе список привяжется к
+                // кнопке «Добавить» и после загрузки откроется прокрученным в конец
+                if (state.rows.isEmpty()) return@LazyColumn
                 val baseRow = state.rows.firstOrNull { it.isBase }
                 if (baseRow != null) {
                     item(key = "base:${baseRow.currency.code}") {
@@ -196,7 +216,6 @@ fun ConverterScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .imePadding()
                     .background(colors.background.copy(alpha = 0.96f)),
             ) {
                 OperatorBar(onOperator = onOperator)
@@ -237,12 +256,21 @@ fun ConverterScreen(
                 onSetBase(current.code)
                 overlay = Overlay.None
             },
+            // сдвиг больше длины списка упирается в край — это и есть «в начало» и «в конец»
+            onMoveToTop = {
+                onMove(current.code, -state.rows.size)
+                overlay = Overlay.None
+            },
             onMoveUp = {
                 onMove(current.code, -1)
                 overlay = Overlay.None
             },
             onMoveDown = {
                 onMove(current.code, 1)
+                overlay = Overlay.None
+            },
+            onMoveToBottom = {
+                onMove(current.code, state.rows.size)
                 overlay = Overlay.None
             },
             onRemove = {
@@ -274,4 +302,33 @@ fun ConverterScreen(
             )
         }
     }
+}
+
+/** Позиция карточки в списке: базовая идёт первой, за ней разделитель. */
+private fun ConverterUiState.listIndexOf(code: String): Int {
+    if (code == baseCode) return 0
+    val position = rows.filterNot { it.isBase }.indexOfFirst { it.currency.code == code }
+    if (position < 0) return -1
+    return if (baseCode != null) position + 2 else position
+}
+
+/**
+ * Докручивает список так, чтобы карточка целиком стояла над нижним отступом.
+ * Карточку, которую пользователь сам увёл вверх за экран, не трогает.
+ */
+private suspend fun LazyListState.revealAboveBottomPadding(index: Int) {
+    fun card() = layoutInfo.visibleItemsInfo.firstOrNull { it.index == index }
+    val visibleEnd = layoutInfo.viewportEndOffset - layoutInfo.afterContentPadding
+    val shown = card()
+    if (shown != null) {
+        val hidden = shown.offset + shown.size - visibleEnd
+        if (hidden > 0) scrollBy(hidden.toFloat())
+        return
+    }
+    val lastVisible = layoutInfo.visibleItemsInfo.lastOrNull() ?: return
+    if (index < lastVisible.index) return
+    // клавиатура появилась без анимации и закрыла карточку целиком
+    scrollToItem(index)
+    val atTop = card() ?: return
+    scrollBy((atTop.offset + atTop.size - visibleEnd).toFloat())
 }

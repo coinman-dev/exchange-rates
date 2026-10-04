@@ -107,9 +107,9 @@ class ScreenshotTest {
     }
 
     @Composable
-    private fun Converter(mode: RateMode = RateMode.MID_MARKET) {
+    private fun Converter(uiState: ConverterUiState = state()) {
         ConverterScreen(
-            state = state(mode),
+            state = uiState,
             onCardSelected = {},
             onInputChanged = {},
             onOperator = {},
@@ -133,8 +133,18 @@ class ScreenshotTest {
     }
 
     @Test
+    fun `конвертер с шестью знаками после запятой`() {
+        // самые длинные суммы на узком экране: шрифт должен уменьшиться, а не обрезать число
+        val long = listOf("1 234,567891", "103 146,654321", "12 345 678,987654")
+        val rows = state().rows.mapIndexed { index, row ->
+            long.getOrNull(index)?.let { row.copy(amountText = it) } ?: row
+        }
+        capture("converter-six-decimals-ru") { Converter(state().copy(rows = rows)) }
+    }
+
+    @Test
     fun `конвертер в режиме курса ЦБ`() {
-        capture("converter-cbr-ru") { Converter(RateMode.CBR) }
+        capture("converter-cbr-ru") { Converter(state(RateMode.CBR)) }
     }
 
     @Test

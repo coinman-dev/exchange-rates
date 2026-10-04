@@ -32,7 +32,12 @@ data class AppSettings(
     val syncOnlyOnWifi: Boolean = false,
     val syncIntervalHours: Int = 6,
     val showChangePercent: Boolean = true,
-)
+) {
+    companion object {
+        /** Наибольшее число знаков после запятой, которое можно выбрать в настройках. */
+        const val MAX_DECIMALS = 6
+    }
+}
 
 private val Context.dataStore by preferencesDataStore(name = "settings")
 
@@ -44,9 +49,16 @@ class SettingsStore @Inject constructor(private val context: Context) {
     suspend fun setThemeMode(mode: ThemeMode) = put(Keys.THEME, mode.name)
 
     suspend fun setLanguage(language: AppLanguage) {
+        // сначала дубль: Activity пересоздаётся, как только DataStore сообщит о смене
+        rememberLanguageForStartup(language)
         put(Keys.LANGUAGE, language.tag)
-        // Дубль в SharedPreferences: язык нужен синхронно в Activity.attachBaseContext,
-        // до того как DataStore успеет отдать значение.
+    }
+
+    /**
+     * Дубль в SharedPreferences: язык нужен синхронно в Activity.attachBaseContext,
+     * до того как DataStore успеет отдать значение.
+     */
+    fun rememberLanguageForStartup(language: AppLanguage) {
         context.getSharedPreferences(SYNC_PREFS, Context.MODE_PRIVATE)
             .edit().putString(Keys.LANGUAGE.name, language.tag).apply()
     }
@@ -54,7 +66,7 @@ class SettingsStore @Inject constructor(private val context: Context) {
     suspend fun setRateMode(mode: RateMode) = put(Keys.RATE_MODE, mode.id)
 
     suspend fun setDecimals(value: Int) {
-        context.dataStore.edit { it[Keys.DECIMALS] = value.coerceIn(0, 4) }
+        context.dataStore.edit { it[Keys.DECIMALS] = value.coerceIn(0, AppSettings.MAX_DECIMALS) }
     }
 
     suspend fun setGrouping(enabled: Boolean) {

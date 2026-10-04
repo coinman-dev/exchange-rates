@@ -1,7 +1,7 @@
 package com.exchangerates.app.presentation.util
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import com.exchangerates.app.R
 import com.exchangerates.app.domain.model.RateMode
@@ -13,14 +13,12 @@ import java.time.format.FormatStyle
 import java.util.Locale
 
 /**
- * Локаль, за которой Compose следит: при смене языка приложения экраны
- * перерисуются. Прямое чтение Locale.getDefault() в composable этого не даёт.
+ * Язык приложения из конфигурации, за которой Compose следит. Locale.getDefault()
+ * не годится: система возвращает ей язык телефона при каждой смене конфигурации
+ * (поворот, тёмный режим), даже когда в приложении выбран другой язык.
  */
 @Composable
-fun rememberAppLocale(): Locale {
-    val composeLocale = androidx.compose.ui.text.intl.Locale.current
-    return remember(composeLocale) { Locale.forLanguageTag(composeLocale.toLanguageTag()) }
-}
+fun rememberAppLocale(): Locale = LocalConfiguration.current.locales[0]
 
 /** «Обновлено: 10 сент., 13:38» или «Курс ЦБ РФ на 10.09.2026». */
 @Composable

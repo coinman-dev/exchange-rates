@@ -14,14 +14,17 @@ val AppShapes = Shapes(
 
 object AppDimens {
     /** Отступ от края экрана: на телефонах вроде Galaxy S21 узкие поля читаются лучше. */
-    val screenPadding = 10.dp
+    val screenPadding = 8.dp
     val cardCorner = 20.dp
-    val cardPaddingH = 14.dp
-    val cardPaddingV = 14.dp
-    val cardGap = 8.dp
+    val cardPaddingH = 12.dp
+    val cardPaddingV = 12.dp
+    val cardGap = 6.dp
     val flagSize = 28.dp
     val operatorButton = 54.dp
 
     /** Запас снизу под плавающую панель навигации. */
     val bottomBarSpace = 132.dp
+
+    /** Запас снизу под панель операторов, пока открыта клавиатура. */
+    val operatorBarSpace = operatorButton + 24.dp
 }

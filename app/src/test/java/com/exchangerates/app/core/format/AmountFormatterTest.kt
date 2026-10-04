@@ -59,6 +59,13 @@ class AmountFormatterTest {
     }
 
     @Test
+    fun `точность из настроек не укорачивается у крупных значений`() {
+        assertEquals("8,354.861234", en.formatAmount(BigDecimal("8354.8612341"), 6, exact = true))
+        assertEquals("8,354.86", en.formatAmount(BigDecimal("8354.86"), 6, exact = true))
+        assertEquals("12.345679", en.formatForEditing(BigDecimal("12.3456789"), 6, exact = true))
+    }
+
+    @Test
     fun `проценты со знаком`() {
         assertEquals("+1.24 %", en.formatPercent(BigDecimal("1.2354")))
         assertEquals("-0.50 %", en.formatPercent(BigDecimal("-0.5")))

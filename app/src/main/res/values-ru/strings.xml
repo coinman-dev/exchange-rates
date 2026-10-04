@@ -57,8 +57,10 @@
 
     <!-- действия с карточкой -->
     <string name="action_make_base">Сделать базовой</string>
+    <string name="action_move_top">Переместить в начало</string>
     <string name="action_move_up">Переместить вверх</string>
     <string name="action_move_down">Переместить вниз</string>
+    <string name="action_move_bottom">Переместить в конец</string>
     <string name="action_remove">Удалить</string>
     <string name="action_open_chart">Открыть график</string>
 
@@ -82,11 +84,11 @@
     <string name="more_title">Ещё</string>
     <string name="settings_appearance">Оформление</string>
     <string name="settings_theme">Тема</string>
-    <string name="theme_system">Как в системе</string>
+    <string name="theme_system">Авто</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
     <string name="settings_language">Язык</string>
-    <string name="language_system">Как в системе</string>
+    <string name="language_system">Авто</string>
     <string name="language_ru">Русский</string>
     <string name="language_en">English</string>
     <string name="settings_numbers">Числа</string>

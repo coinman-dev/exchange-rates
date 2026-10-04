@@ -41,6 +41,7 @@ import com.exchangerates.app.core.theme.AppDimens
 import com.exchangerates.app.core.theme.AppTheme
 import com.exchangerates.app.core.theme.ThemeMode
 import com.exchangerates.app.data.local.AppLanguage
+import com.exchangerates.app.data.local.AppSettings
 import com.exchangerates.app.domain.model.RateMode
 import com.exchangerates.app.presentation.util.rateModeTitle
 
@@ -126,7 +127,7 @@ fun MoreScreen(
         SectionCard(title = stringResource(R.string.settings_numbers)) {
             SegmentedRow(
                 label = stringResource(R.string.settings_decimals),
-                options = (0..4).map { it to it.toString() },
+                options = (0..AppSettings.MAX_DECIMALS).map { it to it.toString() },
                 selected = state.settings.decimals,
                 onSelect = onDecimals,
             )
@@ -198,8 +199,8 @@ private fun SectionCard(title: String, content: @Composable () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(colors.surface, RoundedCornerShape(AppDimens.cardCorner))
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
+                .padding(14.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             content()
         }
@@ -224,7 +225,7 @@ private fun <T> SegmentedRow(
         )
         Spacer(Modifier.height(8.dp))
         if (vertical) {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 options.forEach { (value, title) ->
                     OptionChip(
                         title = title,
@@ -235,12 +236,12 @@ private fun <T> SegmentedRow(
                 }
             }
         } else {
-            // FlowRow: подписи вроде «Как в системе» + «Светлая» + «Тёмная»
-            // в одну строку не помещаются и раньше рвались по буквам
+            // FlowRow: длинные подписи в одну строку не помещаются
+            // и раньше рвались по буквам
             FlowRow(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 options.forEach { (value, title) ->
                     OptionChip(
@@ -269,7 +270,7 @@ private fun OptionChip(
                 CircleShape,
             )
             .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
+            .padding(horizontal = 14.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center,
     ) {
         Text(

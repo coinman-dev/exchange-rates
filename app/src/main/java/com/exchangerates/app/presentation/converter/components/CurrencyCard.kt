@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.ExpandMore
@@ -234,6 +235,8 @@ private fun AmountArea(
             modifier = Modifier.clickable(onClick = onSelect),
         )
     } else {
+        // длинная сумма (до шести знаков после запятой) уменьшает шрифт, а не
+        // обрезается многоточием: обрезанное число читается как другое число
         Text(
             text = data.amountText,
             style = amountStyle,
@@ -241,6 +244,11 @@ private fun AmountArea(
             maxLines = 1,
             softWrap = false,
             overflow = TextOverflow.Ellipsis,
+            autoSize = TextAutoSize.StepBased(
+                minFontSize = 14.sp,
+                maxFontSize = amountStyle.fontSize,
+                stepSize = 1.sp,
+            ),
             modifier = Modifier.clickable(onClick = onSelect),
         )
     }
