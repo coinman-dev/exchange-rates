@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -37,6 +38,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.buildAnnotatedString
@@ -259,7 +261,9 @@ private fun AmountArea(
  *
  * На узком экране (Galaxy S21 и подобные) отдельные Text в Row не помещались,
  * и изменение переносилось по одному символу в столбик. Поэтому строка
- * собирается целиком, перенос запрещён, а лишнее обрезается многоточием.
+ * собирается целиком и перенос запрещён. Если она не помещается (крупный
+ * системный шрифт, длинный курс), уменьшается шрифт: изменение стоит в конце
+ * строки, и многоточие съедало именно его, оставляя «+…».
  */
 @Composable
 private fun UnitRateLine(
@@ -278,14 +282,26 @@ private fun UnitRateLine(
             }
         }
     }
-    Text(
-        text = line,
-        style = MaterialTheme.typography.bodyMedium,
-        color = colors.textSecondary,
-        maxLines = 1,
-        softWrap = false,
-        overflow = TextOverflow.Ellipsis,
-    )
+    val style = MaterialTheme.typography.bodyMedium
+    // высота строки закреплена: с уменьшенным шрифтом карточки иначе выходят разной высоты
+    Box(
+        modifier = Modifier.height(with(LocalDensity.current) { style.lineHeight.toDp() }),
+        contentAlignment = Alignment.CenterEnd,
+    ) {
+        Text(
+            text = line,
+            style = style,
+            color = colors.textSecondary,
+            maxLines = 1,
+            softWrap = false,
+            overflow = TextOverflow.Ellipsis,
+            autoSize = TextAutoSize.StepBased(
+                minFontSize = 8.sp,
+                maxFontSize = style.fontSize,
+                stepSize = 0.5.sp,
+            ),
+        )
+    }
 }
 
 @Composable

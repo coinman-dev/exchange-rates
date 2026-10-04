@@ -5,8 +5,8 @@
 ```bash
 ./gradlew :app:assembleDebug                        # отладочный APK
 ./gradlew :app:assembleRelease                      # релизный APK (R8), ~1,9 МБ
-./gradlew :app:testDebugUnitTest                    # 102 теста
-./gradlew :app:testDebugUnitTest -PskipLiveTests    # 91 тест, без обращений к сети
+./gradlew :app:testDebugUnitTest                    # 103 теста
+./gradlew :app:testDebugUnitTest -PskipLiveTests    # 92 теста, без обращений к сети
 ```
 
 Тесты идут на JDK 21 через toolchain (это требование Robolectric для SDK 36+),

@@ -66,7 +66,7 @@ quoted in USDT and treated as equal to the dollar, as the same dialog says.
 ```bash
 ./gradlew :app:assembleDebug          # debug APK
 ./gradlew :app:assembleRelease        # release APK (R8), about 1.9 MB
-./gradlew :app:testDebugUnitTest      # 102 tests, including live API checks
+./gradlew :app:testDebugUnitTest      # 103 tests, including live API checks
 ```
 
 The release is signed with a key from the `secrets/` folder, which is not part

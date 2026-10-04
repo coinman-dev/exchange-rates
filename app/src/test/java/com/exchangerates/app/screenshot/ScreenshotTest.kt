@@ -5,11 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.unit.Density
 import com.exchangerates.app.core.theme.ExchangeRatesTheme
 import com.exchangerates.app.core.theme.ThemeMode
 import com.exchangerates.app.domain.model.Currency
@@ -140,6 +143,22 @@ class ScreenshotTest {
             long.getOrNull(index)?.let { row.copy(amountText = it) } ?: row
         }
         capture("converter-six-decimals-ru") { Converter(state().copy(rows = rows)) }
+    }
+
+    @Test
+    fun `конвертер с крупным шрифтом системы`() {
+        // на телефоне с увеличенным шрифтом изменение за сутки обрезалось до «+…»
+        val rows = state().rows.map { row ->
+            if (row.currency.code == "BTC") row.copy(changePercentText = "+1,24 %") else row
+        }
+        capture("converter-large-font-ru") {
+            val density = LocalDensity.current
+            CompositionLocalProvider(
+                LocalDensity provides Density(density.density, fontScale = 1.3f),
+            ) {
+                Converter(state().copy(rows = rows))
+            }
+        }
     }
 
     @Test

@@ -67,7 +67,7 @@ USDT и приняты равными доллару, о чём сказано �
 ```bash
 ./gradlew :app:assembleDebug          # отладочный APK
 ./gradlew :app:assembleRelease        # релизный APK (R8), около 1,9 МБ
-./gradlew :app:testDebugUnitTest      # 102 теста, включая проверку живых API
+./gradlew :app:testDebugUnitTest      # 103 теста, включая проверку живых API
 ```
 
 Релиз подписывается ключом из папки `secrets/`, которая в репозиторий не входит;
