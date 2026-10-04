@@ -1,3 +1,5 @@
+import java.io.StringReader
+import java.util.Properties
 import org.gradle.api.tasks.testing.Test
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -9,6 +11,24 @@ plugins {
     alias(libs.plugins.hilt)
 }
 
+// Подпись релиза. Четыре значения RELEASE_* читаются из secrets/signing.properties,
+// а на CI — из переменных окружения с теми же именами (см. secrets/README.md).
+// Без ключа релиз всё равно собирается, но неподписанным: такой APK годится для
+// проверки R8, а на телефон не ставится.
+val signingProperties = Properties().apply {
+    providers.fileContents(rootProject.layout.projectDirectory.file("secrets/signing.properties"))
+        .asText.orNull?.let { load(StringReader(it)) }
+}
+
+fun signingValue(name: String): String =
+    signingProperties.getProperty(name) ?: providers.environmentVariable(name).orNull.orEmpty()
+
+// В файле путь к хранилищу задан относительно secrets/, на CI он абсолютный.
+val releaseStoreFile = signingValue("RELEASE_STORE_FILE")
+    .takeIf { it.isNotEmpty() }
+    ?.let { rootProject.file("secrets").resolve(it) }
+    ?.takeIf { it.exists() }
+
 android {
     namespace = "com.exchangerates.app"
     compileSdk = 37
@@ -19,7 +39,7 @@ android {
         minSdk = 26
         targetSdk = 37
         versionCode = 1
-        versionName = "0.1.0"
+        versionName = "0.1.0-beta"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,11 +48,23 @@ android {
         localeFilters += listOf("en", "ru")
     }
 
+    signingConfigs {
+        create("release") {
+            if (releaseStoreFile != null) {
+                storeFile = releaseStoreFile
+                storePassword = signingValue("RELEASE_STORE_PASSWORD")
+                keyAlias = signingValue("RELEASE_KEY_ALIAS")
+                keyPassword = signingValue("RELEASE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
         }
         release {
+            if (releaseStoreFile != null) signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

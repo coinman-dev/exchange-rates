@@ -4,13 +4,27 @@
 
 ```bash
 ./gradlew :app:assembleDebug                        # отладочный APK
-./gradlew :app:assembleRelease                      # релизный APK (R8), ~1,8 МБ
-./gradlew :app:testDebugUnitTest                    # 84 теста
-./gradlew :app:testDebugUnitTest -PskipLiveTests    # 73 теста, без обращений к сети
+./gradlew :app:assembleRelease                      # релизный APK (R8), ~1,9 МБ
+./gradlew :app:testDebugUnitTest                    # 102 теста
+./gradlew :app:testDebugUnitTest -PskipLiveTests    # 91 тест, без обращений к сети
 ```
 
 Тесты идут на JDK 21 через toolchain (это требование Robolectric для SDK 36+),
 байт-код приложения остаётся Java 17. Нужна платформа SDK `android-37.2`.
+
+## Подпись релиза и секреты
+
+Ключ подписи и пароли лежат в `secrets/` (в git попадает только
+`secrets/README.md`, там же описание). `assembleRelease` читает
+`secrets/signing.properties`, на CI те же четыре значения `RELEASE_*` приходят
+из секретов репозитория. Без ключа релиз собирается неподписанным
+(`app-release-unsigned.apk`) и на телефон не ставится.
+
+## Выпуск версии
+
+Тег `vX.Y.Z` (он должен совпадать с `versionName` в `app/build.gradle.kts`)
+запускает `.github/workflows/release.yml`: тесты, подписанный APK, публикация в
+GitHub Releases. Тег с дефисом (`v0.1.0-beta`) публикуется как пререлиз.
 
 ## Как посмотреть вёрстку без телефона
 
@@ -82,4 +96,5 @@ Kotlin 2.2.10, поэтому плагины Compose и kotlinx.serialization б
 
 Виджет рабочего стола (Glance), уведомления о курсе, перетаскивание карточек,
 расширенный список криптовалют. План и решения заказчика — в
-`.ai/spec_v2_research_design_datasources.md`.
+`.ai/spec_v2_research_design_datasources.md` (папка `.ai/` в репозиторий не
+входит и есть только на рабочей машине).

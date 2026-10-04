@@ -1,0 +1,84 @@
+name: Release
+
+# Тег вида v0.1.0-beta запускает сборку подписанного APK и публикует его в
+# GitHub Releases. Тег с дефисом (alpha, beta, rc) публикуется как пререлиз.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Сборка и публикация
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v7
+
+      # Иначе в релизе v0.2.0 окажется APK, который называет себя 0.1.0.
+      - name: Версия в сборке совпадает с тегом
+        run: |
+          version=$(grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Тег $GITHUB_REF_NAME, а versionName в app/build.gradle.kts — $version"
+            exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: JDK 17 и 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: |
+            17
+            21
+
+      - name: Android SDK
+        uses: android-actions/setup-android@v4.0.4
+
+      - name: Компоненты SDK
+        run: sdkmanager --install "platforms;android-37.2" "build-tools;37.0.0"
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Тесты
+        run: ./gradlew :app:testDebugUnitTest -PskipLiveTests
+
+      # Релиз без подписи на телефон не ставится, поэтому без ключа сборка останавливается.
+      - name: Ключ подписи
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::error::Секрет KEYSTORE_BASE64 не задан (см. secrets/README.md)"
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+
+      - name: Сборка APK
+        env:
+          RELEASE_STORE_FILE: ${{ runner.temp }}/release.jks
+          RELEASE_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew :app:assembleRelease
+
+      - name: Проверка подписи
+        run: |
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --print-certs \
+            app/build/outputs/apk/release/app-release.apk
+
+      - name: Публикация релиза
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          apk="exchange-rates-$VERSION.apk"
+          cp app/build/outputs/apk/release/app-release.apk "$apk"
+          flags=()
+          case "$GITHUB_REF_NAME" in *-*) flags+=(--prerelease) ;; esac
+          gh release create "$GITHUB_REF_NAME" "$apk" \
+            --title "$GITHUB_REF_NAME" --generate-notes --verify-tag "${flags[@]}"
