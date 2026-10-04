@@ -25,7 +25,8 @@ python3 gen_catalog.py
 
 `make_logo.sh` собирает ресурсы из двух круглых логотипов в `images/`:
 `logo-round.png` (без надписи) и `logo-text-round.png` (с надписью). Сами эти
-файлы скрипт только читает. Нужен ImageMagick 7.
+файлы скрипт только читает; круг берётся ровно по белому диску исходника,
+поэтому рисунок стоит в нём так же, как в файле. Нужен ImageMagick 7.
 
 - `res/drawable-nodpi/logo_about.webp` — логотип в разделе «О приложении»;
 - `res/mipmap-*/ic_launcher_foreground.webp` и `ic_launcher_monochrome.webp` — слои
