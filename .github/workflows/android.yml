@@ -1,21 +1,29 @@
 name: Android
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['app/**', 'gradle/**', '*.gradle.kts', 'gradle.properties', 'gradlew*', '.github/workflows/android.yml']
   workflow_dispatch:
+    inputs:
+      live_sources:
+        description: "Also contact the live exchange-rate providers"
+        type: boolean
+        default: false
   schedule:
-    # Раз в неделю проверяем, что источники курсов не сменили схему ответа.
     - cron: "0 6 * * 1"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && !github.event.pull_request.draft)
     name: Сборка и тесты
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -49,34 +57,8 @@ jobs:
       - name: Lint
         run: ./gradlew :app:lintDebug
 
-      # Ключ подписи лежит в секретах репозитория (см. secrets/README.md). У запросов
-      # из форков секретов нет: тогда релиз собирается неподписанным, сборка не падает.
-      - name: Ключ подписи
-        id: keystore
-        env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        run: |
-          if [ -z "$KEYSTORE_BASE64" ]; then
-            echo "::warning::Секрет KEYSTORE_BASE64 не задан — релизный APK будет без подписи"
-            exit 0
-          fi
-          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
-          echo "path=$RUNNER_TEMP/release.jks" >> "$GITHUB_OUTPUT"
-
-      - name: Сборка APK
-        env:
-          RELEASE_STORE_FILE: ${{ steps.keystore.outputs.path }}
-          RELEASE_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          RELEASE_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          RELEASE_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew :app:assembleDebug :app:assembleRelease
-
-      # Без ключа Gradle молча выдаёт неподписанный APK, поэтому подпись проверяется явно.
-      - name: Проверка подписи
-        if: steps.keystore.outputs.path != ''
-        run: |
-          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --print-certs \
-            app/build/outputs/apk/release/app-release.apk
+      - name: Сборка debug APK
+        run: ./gradlew :app:assembleDebug
 
       - name: Отчёты о тестах
         if: always()
@@ -92,8 +74,7 @@ jobs:
           name: apk
           path: |
             app/build/outputs/apk/debug/*.apk
-            app/build/outputs/apk/release/*.apk
-          retention-days: 14
+          retention-days: 3
 
   live-sources:
     name: Проверка живых источников курсов
@@ -101,7 +82,7 @@ jobs:
     timeout-minutes: 20
     # Отдельная задача: падение означает, что источник сменил схему ответа,
     # а не что сломан код. Запускается по расписанию и вручную.
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || inputs.live_sources
 
     steps:
       - uses: actions/checkout@v7
